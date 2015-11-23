@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:57:59 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/23 18:27:48 by nbouteme         ###   ########.fr       */
+/*   Updated: 2015/11/23 19:25:06 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,14 @@ void ft_strdel(char **ap)
 void ft_strclr(char *s)
 {
 	ft_memset(s, 0, ft_strlen(s));
+}
+
+int ft_isdigit(int c)
+{
+	return '0' <= c && c <= '9';
+}
+
+int ft_isalnum(int c)
+{
+	return ft_isdigit(c) || ft_isalpha(c);
 }

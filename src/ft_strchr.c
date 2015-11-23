@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 13:27:49 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/23 18:12:54 by nbouteme         ###   ########.fr       */
+/*   Updated: 2015/11/23 19:57:08 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char   *ft_strchr(const char *s, int c)
 {
-	return ft_memchr(s, c, ft_strlen(s));
+	return ft_memchr(s, c, ft_strlen(s) - 1);
 }
 
 char   *ft_strrchr(const char *s, int c)

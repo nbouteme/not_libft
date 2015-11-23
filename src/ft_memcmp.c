@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 13:24:20 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/23 15:29:22 by nbouteme         ###   ########.fr       */
+/*   Updated: 2015/11/23 19:51:41 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int ft_memcmp(const void *s1, const void *s2, size_t n)
 	while(i != n)
 		if(a[i] != b[i])
 			return a[i] - b[i];
+		else
+			++i;
 	return 0;
 }
 

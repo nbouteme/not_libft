@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:23:04 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/23 15:32:50 by nbouteme         ###   ########.fr       */
+/*   Updated: 2015/11/23 20:29:25 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void *ft_memmove(void *dst, const void *src, size_t len)
 	s = src;
 
 	if(d > s && (size_t)(d - s) <= len)
-		while(--len)
-			d[len] = s[len], --len;
+		while(len--)
+			d[len] = s[len];
 	else
 	{
 		i = 0;

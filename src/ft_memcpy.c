@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:13:19 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/23 15:30:10 by nbouteme         ###   ########.fr       */
+/*   Updated: 2015/11/23 19:50:31 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void *ft_memccpy(void *dst, const void *src, int c, size_t n)
 
 	while(i != n)
 		if(s[i] == v)
-			return d[i] = s[i], &d[i];
+			return d[i] = s[i], &d[++i];
 		else
 			d[i] = s[i], ++i;
 

@@ -6,7 +6,7 @@
 #    By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 11:08:14 by nbouteme          #+#    #+#              #
-#    Updated: 2015/11/23 18:28:01 by nbouteme         ###   ########.fr        #
+#    Updated: 2015/11/23 20:14:12 by nbouteme         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,7 +14,7 @@ NAME = libft.a
 
 SRCDIR = src
 
-INCDIR = include
+INCDIR = includes
 
 SRC = ft_atoi.c	     \
       ft_is.c	     \
@@ -35,7 +35,7 @@ SRC = ft_atoi.c	     \
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -I$(INCDIR)
+CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -g
 
 all: $(NAME)
 
