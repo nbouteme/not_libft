@@ -6,7 +6,7 @@
 #    By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 11:08:14 by nbouteme          #+#    #+#              #
-#    Updated: 2015/11/24 12:07:07 by nbouteme         ###   ########.fr        #
+#    Updated: 2015/11/24 15:28:55 by nbouteme         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -20,6 +20,8 @@ SRC = ft_atoi.c		\
 	  ft_io.c		\
 	  ft_is.c		\
 	  ft_itoa.c		\
+	  ft_list.c		\
+	  ft_list_fun.c	\
 	  ft_llio.c		\
 	  ft_memalloc.c \
 	  ft_memchr.c	\
