@@ -6,18 +6,18 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:55:18 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/23 17:55:25 by nbouteme         ###   ########.fr       */
+/*   Updated: 2015/11/24 13:57:40 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int     ft_strequ(char const *s1, char const *s2)
+int	ft_strequ(char const *s1, char const *s2)
 {
-	return ft_strcmp(s1, s2) == 0;
+	return (ft_strcmp(s1, s2) == 0);
 }
 
-int     ft_strnequ(char const *s1, char const *s2, size_t n)
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	return ft_strncmp(s1, s2, n) == 0;
+	return (ft_strncmp(s1, s2, n) == 0);
 }

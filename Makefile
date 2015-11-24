@@ -6,7 +6,7 @@
 #    By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 11:08:14 by nbouteme          #+#    #+#              #
-#    Updated: 2015/11/23 20:14:12 by nbouteme         ###   ########.fr        #
+#    Updated: 2015/11/24 12:07:07 by nbouteme         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,22 +16,24 @@ SRCDIR = src
 
 INCDIR = includes
 
-SRC = ft_atoi.c	     \
-      ft_is.c	     \
-      ft_itoa.c	     \
-      ft_memalloc.c  \
-      ft_memchr.c    \
-      ft_memcmp.c    \
-      ft_memcpy.c    \
-      ft_memmove.c   \
-      ft_memset.c    \
-      ft_strchr.c    \
-      ft_streq.c     \
-      ft_strfun.c    \
-      ft_string.c	 \
-      ft_strman.c	 \
-      ft_strmem.c	 \
-      ft_to.c
+SRC = ft_atoi.c		\
+	  ft_io.c		\
+	  ft_is.c		\
+	  ft_itoa.c		\
+	  ft_llio.c		\
+	  ft_memalloc.c \
+	  ft_memchr.c	\
+	  ft_memcmp.c	\
+	  ft_memcpy.c	\
+	  ft_memmove.c  \
+	  ft_memset.c	\
+	  ft_strchr.c	\
+	  ft_streq.c	\
+	  ft_strfun.c	\
+	  ft_string.c	\
+	  ft_strman.c	\
+	  ft_strmem.c	\
+	  ft_to.c		\
 
 OBJ = $(SRC:.c=.o)
 

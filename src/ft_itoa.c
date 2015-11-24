@@ -6,13 +6,13 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:54:07 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/23 18:12:10 by nbouteme         ###   ########.fr       */
+/*   Updated: 2015/11/24 13:36:35 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-static char *ft_strrev(char *str)
+static char	*ft_strrev(char *str)
 {
 	char *r;
 	char *s;
@@ -20,35 +20,34 @@ static char *ft_strrev(char *str)
 
 	s = str;
 	r = str + ft_strlen(str) - 1;
-	while(s < r)
+	while (s < r)
 	{
 		tmp = *s;
 		*s++ = *r;
-		*r++ = tmp;
+		*r-- = tmp;
 	}
-
-	return str;
+	return (str);
 }
 
-char   *ft_itoa(int n)
+char		*ft_itoa(int n)
 {
-	char *m;
-	int neg;
-	int i;
+	char	*m;
+	int		neg;
+	int		i;
 
-	if((unsigned)n == 0x80000000)
-		return ft_strdup("-2147483648");
+	if ((unsigned)n == 0x80000000)
+		return (ft_strdup("-2147483648"));
 	m = ft_strnew(32);
-	i = 0;
 	neg = n < 0;
-	if(neg)
-		n = -n, m[0] = '-';
-	while(1)
+	i = neg;
+	n = neg ? -n : n;
+	m[0] = neg ? '-' : 0;
+	while (1)
 	{
-		m[i] = n % 10;
-		if(!n)
-			break ;
+		m[i++] = n % 10 + '0';
 		n /= 10;
+		if (!n)
+			break ;
 	}
-	return ft_strrev(m + neg) - neg;
+	return (ft_strrev(m + neg) - neg);
 }

@@ -6,22 +6,22 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 13:55:40 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/23 13:55:52 by nbouteme         ###   ########.fr       */
+/*   Updated: 2015/11/24 14:06:32 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int     ft_toupper(int c)
+int	ft_toupper(int c)
 {
-	if(ft_isupper(c))
-		c += 'a' - 'A';
-	return c;
+	if (ft_islower(c))
+		c -= 'a' - 'A';
+	return (c);
 }
 
-int     ft_tolower(int c)
+int	ft_tolower(int c)
 {
-	if(ft_islower(c))
-		c -= 'a' - 'A';
-	return c;
+	if (ft_isupper(c))
+		c += 'a' - 'A';
+	return (c);
 }
