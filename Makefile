@@ -6,7 +6,7 @@
 #    By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 11:08:14 by nbouteme          #+#    #+#              #
-#    Updated: 2015/11/25 19:44:30 by nbouteme         ###   ########.fr        #
+#    Updated: 2015/11/25 20:08:25 by nbouteme         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -21,11 +21,13 @@ SRC =	ft_putchar_fd.c			\
 		ft_lstdelone.c			\
 		ft_putnbr_fd.c			\
 		ft_putstr_fd.c			\
+		ft_lstfilter.c			\
 		ft_memalloc.c			\
 		ft_strsplit.c			\
 		ft_striteri.c			\
 		ft_tolower.c			\
 		ft_toupper.c			\
+		ft_lstpush.c			\
 		ft_isalnum.c			\
 		ft_isalpha.c			\
 		ft_isascii.c			\
