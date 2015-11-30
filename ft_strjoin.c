@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 19:01:15 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/25 19:01:23 by nbouteme         ###   ########.fr       */
+/*   Updated: 2015/11/30 14:35:37 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char		*ft_strjoin(char const *s1, char const *s2)
 
 	len = ft_strlen(s1);
 	m = ft_strnew(len + ft_strlen(s2) + 1);
+	if (!m)
+		return (m);
 	ft_strcpy(m, s1);
 	ft_strcat(m, s2);
 	return (m);

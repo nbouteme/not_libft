@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 18:33:11 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/25 18:53:21 by nbouteme         ###   ########.fr       */
+/*   Updated: 2015/11/30 14:33:26 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_putnbr_fd(int n, int fd)
 	char *m;
 
 	m = ft_itoa(n);
+	if (!m)
+		return ;
 	ft_putstr_fd(m, fd);
 	ft_strdel(&m);
 }

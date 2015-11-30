@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:54:50 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/25 19:02:10 by nbouteme         ###   ########.fr       */
+/*   Updated: 2015/11/30 14:43:41 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ static int	count_tokens(const char *str, char c)
 	return (i);
 }
 
+static void *free_array(char **ret, int n)
+{
+	int i;
+
+	i = 0;
+	while (i < n)
+	{
+		free(ret[i]);
+		++i;
+	}
+	return (0);
+}
+
 char		**ft_strsplit(char const *str, char c)
 {
 	const char	*s;
@@ -52,7 +65,9 @@ char		**ft_strsplit(char const *str, char c)
 	{
 		while (*s && *s != c)
 			++s;
-		ret[i] = ft_strncpy(ft_strnew(s - str), str, s - str);
+		if (!(ret[i] = ft_strnew(s - str)))
+			return (free_array(ret, i));
+		ret[i] = ft_strncpy(ret[i], str, s - str);
 		while (*s && *s == c)
 			++s;
 		i += !!ret[i];

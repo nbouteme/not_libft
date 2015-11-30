@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:54:07 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/25 18:49:28 by nbouteme         ###   ########.fr       */
+/*   Updated: 2015/11/30 14:34:03 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char		*ft_itoa(int n)
 	if ((unsigned)n == 0x80000000)
 		return (ft_strdup("-2147483648"));
 	m = ft_strnew(32);
+	if (!m)
+		return (m);
 	neg = n < 0;
 	i = neg;
 	n = neg ? -n : n;
