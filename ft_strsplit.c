@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:54:50 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/30 14:43:41 by nbouteme         ###   ########.fr       */
+/*   Updated: 2015/11/30 14:46:48 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	count_tokens(const char *str, char c)
 	return (i);
 }
 
-static void *free_array(char **ret, int n)
+static void	*free_array(char **ret, int n)
 {
 	int i;
 
