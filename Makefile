@@ -69,16 +69,15 @@ SRC =	ft_putchar_fd.c			\
 		ft_strdel.c				\
 		ft_strdup.c				\
 		ft_strlen.c				\
-		ft_strman.c				\
 		ft_strmap.c				\
-		ft_strneq.c				\
+		ft_strnequ.c				\
 		ft_strnew.c				\
 		ft_strrev.c				\
 		ft_strstr.c				\
 		ft_strsub.c				\
 		ft_putnbr.c				\
 		ft_bzero.c				\
-		ft_streq.c				\
+		ft_strequ.c				\
 		ft_atoi.c				\
 		ft_itoa.c
 
