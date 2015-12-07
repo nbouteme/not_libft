@@ -68,7 +68,7 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
-int					ft_strindexof(char *n, char c);
+int					ft_strindexof(const char *n, char c);
 
 typedef struct		s_list
 {

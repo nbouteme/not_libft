@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <libft.h>
+
 int ft_strindexof(const char *str, char c)
 {
 	char *s;
