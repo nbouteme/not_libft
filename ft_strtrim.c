@@ -20,9 +20,9 @@ char		*ft_strtrim(char const *s)
 
 	m = s;
 	n = s + ft_strlen(s) - 1;
-	while (n != m && (*n == ' ' || *n == '\n' | *n == '\t'))
+	while (n != m && (*n == ' ' || *n == '\n' || *n == '\t'))
 		--n;
-	while (m != n && (*m == ' ' || *m == '\n' | *m == '\t'))
+	while (m != n && (*m == ' ' || *m == '\n' || *m == '\t'))
 		++m;
 	if (n == m)
 		return (ft_strdup(""));

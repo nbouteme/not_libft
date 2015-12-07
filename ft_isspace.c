@@ -12,7 +12,7 @@
 
 int	ft_isspace(int c)
 {
-	const static char	*sp = " \t\n\v\f\r";
+	static const char	*sp = " \t\n\v\f\r";
 	int					i;
 
 	i = 0;

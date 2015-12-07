@@ -89,19 +89,19 @@ all: $(NAME)
 
 %.o: $(SRCDIR)/%.c
 	@$(CC) $(CFLAGS) -c $^
-	@echo "\033[0;32m[✓] Built C object" $@
+	@echo -e "\033[0;32m[✓] Built C object" $@
 
 $(NAME): $(OBJ)
-	@echo "\033[0;34m--------------------------------"
+	@echo -e "\033[0;34m--------------------------------"
 	@ar rc $(NAME) $(OBJ)
-	@echo "\033[0;31m[✓] Linked C library" $(NAME)
+	@echo -e "\033[0;31m[✓] Linked C library" $(NAME)
 .PHONY: clean fclean re
 clean:
 	@/bin/rm -rf $(OBJ)
-	@echo "\033[0;33m[✓] Removed object files" $(OBJ)
+	@echo -e "\033[0;33m[✓] Removed object files" $(OBJ)
 
 fclean: clean
 	@/bin/rm -rf $(NAME)
-	@echo "\033[0;33m[✓] Removed executable" $(NAME)
+	@echo -e "\033[0;33m[✓] Removed executable" $(NAME)
 
 re: fclean all
