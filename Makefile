@@ -19,6 +19,7 @@ INCDIR = .
 SRC =	ft_putchar_fd.c			\
 		ft_putendl_fd.c			\
 		ft_lstdelone.c			\
+		ft_strindexof.c			\
 		ft_putnbr_fd.c			\
 		ft_putstr_fd.c			\
 		ft_lstfilter.c			\
