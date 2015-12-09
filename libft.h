@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 11:20:53 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/27 11:30:29 by nbouteme         ###   ########.fr       */
+/*   Updated: 2015/12/09 15:55:25 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,21 @@
 # define LIBFT_H
 
 # include <string.h>
+
+typedef struct		s_list
+{
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+}					t_list;
+
+typedef void(*t_destructor)(void *, size_t);
+typedef void(*t_iter)(t_list *);
+typedef t_list *(*t_gen)(t_list *);
+typedef t_list *(*t_genup)(t_list *, void *);
+typedef int(*t_lstcmp)(const t_list *, const t_list *);
+typedef void(*t_af)(t_list *, const t_list *);
+typedef int(*t_keep)(t_list *);
 
 size_t				ft_strlen(const char *s);
 void				*ft_memset(void *b, int c, size_t len);
@@ -69,26 +84,21 @@ void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 int					ft_strindexof(const char *n, char c);
-
-typedef struct		s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
-
 void				ft_lstadd(t_list **alst, t_list *new);
-void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+void				ft_lstdelone(t_list **alst, t_destructor del);
+void				ft_lstdel(t_list **alst, t_destructor del);
+void				ft_lstiter(t_list *lst, t_iter f);
 t_list				*ft_lstnew(void const *content, size_t content_size);
-t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-
-t_list				*ft_lstfilter(t_list *lst, int (*f)(t_list *elem));
+t_list				*ft_lstmap(t_list *lst, t_gen f);
+t_list				*ft_lstmapup(t_list *l, t_genup f, void *up);
+void				ft_lstsort(t_list **head, t_lstcmp cmp);
+t_list				*ft_lstreduce(const t_list *l, const t_list *init, t_af f);
+t_list				*ft_lstfilter(t_list *lst, t_keep f);
 void				ft_lstpush(t_list **lst, t_list *to_add);
 int					ft_isupper(int c);
 char				*ft_strrev(char *s);
 int					ft_isspace(int c);
 int					ft_islower(int c);
+void				ft_swap_any(void *a, void *b, size_t size);
 
 #endif

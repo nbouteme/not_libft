@@ -6,7 +6,7 @@
 #    By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 11:08:14 by nbouteme          #+#    #+#              #
-#    Updated: 2015/12/09 13:39:11 by nbouteme         ###   ########.fr        #
+#    Updated: 2015/12/09 15:57:49 by nbouteme         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,6 +18,7 @@ INCDIR = .
 
 SRC =	ft_putchar_fd.c			\
 		ft_putendl_fd.c			\
+		ft_swap_any.c			\
 		ft_lstreduce.c			\
 		ft_lstdelone.c			\
 		ft_strindexof.c			\
@@ -54,6 +55,7 @@ SRC =	ft_putchar_fd.c			\
 		ft_strnstr.c			\
 		ft_strrchr.c			\
 		ft_strtrim.c			\
+		ft_lstsort.c			\
 		ft_lstadd.c				\
 		ft_lstdel.c				\
 		ft_lstmap.c				\
@@ -73,7 +75,7 @@ SRC =	ft_putchar_fd.c			\
 		ft_strdup.c				\
 		ft_strlen.c				\
 		ft_strmap.c				\
-		ft_strnequ.c				\
+		ft_strnequ.c			\
 		ft_strnew.c				\
 		ft_strrev.c				\
 		ft_strstr.c				\
