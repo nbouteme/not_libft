@@ -6,7 +6,7 @@
 #    By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 11:08:14 by nbouteme          #+#    #+#              #
-#    Updated: 2015/11/25 20:08:25 by nbouteme         ###   ########.fr        #
+#    Updated: 2015/12/09 13:39:11 by nbouteme         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -18,10 +18,12 @@ INCDIR = .
 
 SRC =	ft_putchar_fd.c			\
 		ft_putendl_fd.c			\
+		ft_lstreduce.c			\
 		ft_lstdelone.c			\
 		ft_strindexof.c			\
 		ft_putnbr_fd.c			\
 		ft_putstr_fd.c			\
+		ft_lstmapup.c			\
 		ft_lstfilter.c			\
 		ft_memalloc.c			\
 		ft_strsplit.c			\
@@ -84,7 +86,7 @@ SRC =	ft_putchar_fd.c			\
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -I$(INCDIR)
+CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -g
 
 all: $(NAME)
 
