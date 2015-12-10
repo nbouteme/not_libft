@@ -12,8 +12,7 @@
 
 #include <libft.h>
 
-static t_list *lst_merge(t_list *a, t_list *b,
-						int (*cmp)(const t_list *, const t_list *))
+static t_list *lst_merge(t_list *a, t_list *b, t_lstcmpup cmp, void *up)
 {
 	t_list *l;
 	t_list **ll;
@@ -24,7 +23,7 @@ static t_list *lst_merge(t_list *a, t_list *b,
 		return (a);
 	while (a)
 	{
-		if (cmp(a, b) > 0)
+		if (cmp(a, b, up) > 0)
 			ft_swap_any(&a, &b, sizeof(char *));
 		*ll = a;
 		ll = &a->next;
@@ -34,7 +33,7 @@ static t_list *lst_merge(t_list *a, t_list *b,
 	return (l);
 }
 
-void ft_lstsort(t_list **head, t_lstcmp cmp)
+void ft_lstsortup(t_list **head, t_lstcmpup cmp, void *up)
 {
 	t_list *a;
 	t_list *b;
@@ -42,7 +41,7 @@ void ft_lstsort(t_list **head, t_lstcmp cmp)
 	if (!*head || !(*head)->next)
 		return ;
 	ft_lstsplit(*head, &a, &b);
-	ft_lstsort(&a, cmp);
-	ft_lstsort(&b, cmp);
-	*head = lst_merge(a, b, cmp);
+	ft_lstsortup(&a, cmp, up);
+	ft_lstsortup(&b, cmp, up);
+	*head = lst_merge(a, b, cmp, up);
 }

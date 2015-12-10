@@ -85,13 +85,16 @@ SRC =	ft_putchar_fd.c			\
 		ft_strequ.c				\
 		ft_atoi.c				\
 		ft_itoa.c				\
-		ft_lstnewown.c			
+		ft_lstnewown.c			\
+		ft_lstsplit.c			\
+		ft_lstiterup.c			\
+		ft_lstsortup.c
 
 OBJ = $(SRC:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -g
 
-all: $(NAME)
+all: $(NAME) Makefile
 
 %.o: $(SRCDIR)/%.c
 	@$(CC) $(CFLAGS) -c $^
