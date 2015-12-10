@@ -12,11 +12,6 @@
 
 #include <libft.h>
 
-static t_list *copy_elem(t_list *l)
-{
-	return (ft_lstnew(l->content, l->content_size));
-}
-
 static void ft_lstsplit(t_list *head, t_list **a, t_list **b)
 {
 	int i;
@@ -24,7 +19,7 @@ static void ft_lstsplit(t_list *head, t_list **a, t_list **b)
 	t_list *p;
 
 	i = 0;
-	*a = ft_lstmap(head, &copy_elem);
+	*a = head;
 	l = *a;
 	*b = l;
 	p = l;
