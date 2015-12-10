@@ -84,7 +84,8 @@ SRC =	ft_putchar_fd.c			\
 		ft_bzero.c				\
 		ft_strequ.c				\
 		ft_atoi.c				\
-		ft_itoa.c
+		ft_itoa.c				\
+		ft_lstnewown.c			
 
 OBJ = $(SRC:.c=.o)
 

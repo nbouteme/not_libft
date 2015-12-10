@@ -100,5 +100,6 @@ char				*ft_strrev(char *s);
 int					ft_isspace(int c);
 int					ft_islower(int c);
 void				ft_swap_any(void *a, void *b, size_t size);
+t_list				*ft_lstnewown(void *content, size_t content_size);
 
 #endif
