@@ -16,19 +16,24 @@ SRCDIR = .
 
 INCDIR = .
 
-SRC =	ft_putchar_fd.c			\
+SRC =	ft_lstfilterup.c		\
+		ft_putchar_fd.c			\
 		ft_putendl_fd.c			\
-		ft_swap_any.c			\
+		ft_strindexof.c			\
+		ft_lstnewown.c			\
+		ft_lstsortup.c			\
+		ft_lstiterup.c			\
 		ft_lstreduce.c			\
 		ft_lstdelone.c			\
-		ft_strindexof.c			\
 		ft_putnbr_fd.c			\
 		ft_putstr_fd.c			\
-		ft_lstmapup.c			\
 		ft_lstfilter.c			\
+		ft_swap_any.c			\
+		ft_lstmapup.c			\
 		ft_memalloc.c			\
 		ft_strsplit.c			\
 		ft_striteri.c			\
+		ft_lstsplit.c			\
 		ft_tolower.c			\
 		ft_toupper.c			\
 		ft_lstpush.c			\
@@ -49,6 +54,7 @@ SRC =	ft_putchar_fd.c			\
 		ft_strjoin.c			\
 		ft_strlcat.c			\
 		ft_strmapi.c			\
+		ft_strmapw.c			\
 		ft_strncat.c			\
 		ft_strncmp.c			\
 		ft_strncpy.c			\
@@ -56,6 +62,7 @@ SRC =	ft_putchar_fd.c			\
 		ft_strrchr.c			\
 		ft_strtrim.c			\
 		ft_lstsort.c			\
+		ft_strnequ.c			\
 		ft_lstadd.c				\
 		ft_lstdel.c				\
 		ft_lstmap.c				\
@@ -75,23 +82,18 @@ SRC =	ft_putchar_fd.c			\
 		ft_strdup.c				\
 		ft_strlen.c				\
 		ft_strmap.c				\
-		ft_strnequ.c			\
 		ft_strnew.c				\
 		ft_strrev.c				\
 		ft_strstr.c				\
 		ft_strsub.c				\
 		ft_putnbr.c				\
-		ft_bzero.c				\
 		ft_strequ.c				\
+		ft_bzero.c				\
 		ft_atoi.c				\
 		ft_itoa.c				\
-		ft_lstnewown.c			\
-		ft_lstsplit.c			\
-		ft_lstiterup.c			\
-		ft_lstsortup.c
 
 OBJ = $(SRC:.c=.o)
-
+CC = clang
 CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -g
 
 all: $(NAME) Makefile

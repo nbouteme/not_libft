@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstfilter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 18:50:13 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/25 18:50:14 by nbouteme         ###   ########.fr       */
+/*   Created: 2015/11/25 19:47:01 by nbouteme          #+#    #+#             */
+/*   Updated: 2015/11/25 20:09:07 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_lstiterup(t_list *lst, void (*f)(t_list *elem, void *up), void *up)
+t_list	*ft_lstfilterup(t_list *lst, t_keepup f, void *up)
 {
-	f(lst, up);
-	while (lst->next)
-		f(lst = lst->next, up);
+	t_list *l;
+
+	l = 0;
+	while (lst)
+	{
+		if (f(lst, up))
+			ft_lstpush(&l, lst);
+		lst = lst->next;
+	}
+	return (l);
 }
