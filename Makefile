@@ -96,23 +96,29 @@ OBJ = $(SRC:.c=.o)
 CC = clang
 CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -g
 
+ECHO = echo
+UNAME := $(shell uname)
+ifeq ($(UNAME), Linux)
+ECHO = echo -e
+endif
+
 all: $(NAME) Makefile
 
 %.o: $(SRCDIR)/%.c
 	@$(CC) $(CFLAGS) -c $^
-	@echo -e "\033[0;32m[✓] Built C object" $@
+	@$(ECHO) -e "\033[0;32m[✓] Built C object" $@
 
 $(NAME): $(OBJ)
-	@echo -e "\033[0;34m--------------------------------"
+	@$(ECHO) -e "\033[0;34m--------------------------------"
 	@ar rc $(NAME) $(OBJ)
-	@echo -e "\033[0;31m[✓] Linked C library" $(NAME)
+	@$(ECHO) -e "\033[0;31m[✓] Linked C library" $(NAME)
 .PHONY: clean fclean re
 clean:
 	@/bin/rm -rf $(OBJ)
-	@echo -e "\033[0;33m[✓] Removed object files" $(OBJ)
+	@$(ECHO) -e "\033[0;33m[✓] Removed object files" $(OBJ)
 
 fclean: clean
 	@/bin/rm -rf $(NAME)
-	@echo -e "\033[0;33m[✓] Removed executable" $(NAME)
+	@$(ECHO) -e "\033[0;33m[✓] Removed executable" $(NAME)
 
 re: fclean all
