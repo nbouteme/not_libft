@@ -45,6 +45,7 @@ typedef struct	s_model
 	t_mat4 model;
 	int w;
 	int h;
+	size_t e_sz;
 }				t_model;
 
 void draw_point_bare(t_graphics *g, t_point pos);
