@@ -25,5 +25,7 @@ char		*ft_lsitoa(long n, char *base)
 	m[0] = neg ? '-' : 0;
 	p = ((n >= 0) ? n : ((~(unsigned long)n) + 1));
 	l = ft_luitoa(p, base);
-	return (ft_strcpy(m + neg, l) - neg);
+	ft_strcpy(m + neg, l);
+	free(l);
+	return (m);
 }
