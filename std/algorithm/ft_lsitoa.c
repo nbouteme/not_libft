@@ -6,11 +6,12 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:54:07 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/30 14:34:03 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/01/06 17:53:29 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft/std.h>
+#include <stdlib.h>
 
 char		*ft_lsitoa(long n, char *base)
 {
