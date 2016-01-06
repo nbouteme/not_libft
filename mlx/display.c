@@ -1,10 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <X11/keysym.h>
 #include <libft/gfx.h>
 #include <libft/mlx.h>
 
 int disp_expose(t_display *d);
+
+#ifdef __LINUX
+#include <X11/keysym.h>
+#else
+#include "osx_key_def.h"
+#endif
 
 int disp_handle_key(int key, t_display *d)
 {
@@ -31,14 +36,6 @@ int disp_handle_key(int key, t_display *d)
 }
 
 void draw_line(t_graphics *g, t_point a, t_point b);
-
-void printmat4(t_mat4 a)
-{
-	printf("[%f, %f, %f, %f]\n", (*a)[0][0], (*a)[0][1], (*a)[0][2], (*a)[0][3]);
-	printf("[%f, %f, %f, %f]\n", (*a)[1][0], (*a)[1][1], (*a)[1][2], (*a)[1][3]);
-	printf("[%f, %f, %f, %f]\n", (*a)[2][0], (*a)[2][1], (*a)[2][2], (*a)[2][3]);
-	printf("[%f, %f, %f, %f]\n", (*a)[3][0], (*a)[3][1], (*a)[3][2], (*a)[3][3]);
-}
 
 t_vec4 project(t_mat4 mvp, t_vec4 n)
 {
@@ -102,7 +99,7 @@ int disp_expose(t_display *d)
 		free(pa);
 		free(pb);
 	}
-	
+
 	free(tmp);
 	free(mvp);
 	present(g);
@@ -135,7 +132,7 @@ t_display *new_display(t_model *m)
 	(*ret->position)[2] = 25.75;
 	mlx_key_hook(ret->win, &disp_handle_key, ret);
 	mlx_expose_hook(ret->win, &disp_expose, ret);
-	mlx_loop_hook(ret->conn, &disp_expose, ret);	
+	mlx_loop_hook(ret->conn, &disp_expose, ret);
 	return ret;
 }
 

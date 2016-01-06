@@ -6,7 +6,7 @@
 #    By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 11:08:14 by nbouteme          #+#    #+#              #
-#    Updated: 2015/12/09 15:57:49 by nbouteme         ###   ########.fr        #
+#    Updated: 2016/01/06 18:16:58 by nbouteme         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -17,13 +17,20 @@ BUILDLIB = std
 
 $(if $(OBUILDLIBS), $(eval BUILDLIB := $(OBUILDLIBS)))
 
+
 DEP = ft
 PDEP =
 LDEP = libft
 
 BUILDLIB := $(sort $(BUILDLIB))
 
-$(if $(findstring mlx,$(BUILDLIB)), $(eval DEP += mlx X11 Xext) $(eval PDEP += minilibx) $(eval LDEP += minilibx))
+UNAME = $(shell uname)
+$(if $(findstring mlx,$(BUILDLIB)), \
+$(eval DEP += mlx\
+$(if $(findstring Linux,$(UNAME)),$(eval DEP += X11 Xext))\
+$(eval PDEP += minilibx)\
+$(eval LDEP += minilibx)\
+$(if $(findstring Darwin,$(UNAME)),$(eval SUPF += -framework OpenGL -framework AppKit))))
 $(if $(findstring gfx,$(BUILDLIB)), $(eval DEP += m))
 
 SRC =
@@ -51,6 +58,7 @@ all: $(NAME)
 	@$(DEP_ECHO) DEP := $(DEP)
 	@$(DEP_ECHO) PDEP := $(PDEP)
 	@$(DEP_ECHO) LDEP := $(LDEP)
+	@$(DEP_ECHO) SUPF := $(SUPF)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
 	@$(ECHO) -e "\033[0;32m[✓] Built C object" $@
