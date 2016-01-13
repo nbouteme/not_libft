@@ -6,13 +6,13 @@
 /*   By: nbouteme <nbouteme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 15:39:17 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/12/09 15:51:57 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/01/13 19:13:16 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft/std.h>
 
-static t_list *lst_merge(t_list *a, t_list *b,
+static t_list	*lst_merge(t_list *a, t_list *b,
 						int (*cmp)(const t_list *, const t_list *))
 {
 	t_list *l;
@@ -34,7 +34,7 @@ static t_list *lst_merge(t_list *a, t_list *b,
 	return (l);
 }
 
-void ft_lstsort(t_list **head, t_lstcmp cmp)
+void			ft_lstsort(t_list **head, t_lstcmp cmp)
 {
 	t_list *a;
 	t_list *b;
