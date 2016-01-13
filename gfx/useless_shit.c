@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clip.h                                             :+:      :+:    :+:   */
+/*   useless_shit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/13 18:49:19 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/01/13 18:49:49 by nbouteme         ###   ########.fr       */
+/*   Created: 2016/01/13 18:51:15 by nbouteme          #+#    #+#             */
+/*   Updated: 2016/01/13 18:54:55 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLIP_H
-# define CLIP_H
+#include <stdlib.h>
+#include <libft/std.h>
+#include <libft/mlx.h>
+#include <libft/gfx.h>
 
-# include "display.h"
-
-enum	e_rel
+void	present(t_graphics *g)
 {
-	IN = 0x00000000,
-	LEFT = 0x00000001,
-	RIGHT = 0x00000100,
-	TOP = 0x00010000,
-	BOT = 0x01000000
-};
+	mlx_put_image_to_window(g->d->conn, g->d->win, g->int_img, 0, 0);
+}
 
-int clip(t_graphics *g, t_point *a, t_point *b);
-
-#endif
+void	clear_graphics(t_graphics *g)
+{
+	ft_memset(g->fb, 0, 4 * g->dim.w * g->dim.h);
+}
