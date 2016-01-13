@@ -1,27 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mat3.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/13 19:00:45 by nbouteme          #+#    #+#             */
+/*   Updated: 2016/01/13 19:01:44 by nbouteme         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <libft/math.h>
 
-t_mat3 new_mat3()
+t_mat3	new_mat3(void)
 {
 	t_mat3 ret;
 
 	ft_bzero(&ret, sizeof(ret));
-	return ret;
+	return (ret);
 }
 
-t_mat3 new_mat3_from_data(const float *data)
+t_mat3	new_mat3_from_data(const float *data)
 {
 	t_mat3 ret;
 
 	ft_memcpy(&ret, data, sizeof(ret));
-	return ret;
+	return (ret);
 }
 
-t_mat3 mat3_mult(t_mat3 a, t_mat3 b)
+t_mat3	mat3_mult(t_mat3 a, t_mat3 b)
 {
-	t_mat3 c;
-	int i;
-	int j;
-	int k;
+	t_mat3	c;
+	int		i;
+	int		j;
+	int		k;
 
 	c = new_mat3();
 	i = 0;
@@ -40,10 +52,10 @@ t_mat3 mat3_mult(t_mat3 a, t_mat3 b)
 		}
 		++i;
 	}
-	return c;
+	return (c);
 }
 
-t_mat3 mat3_add(t_mat3 a, t_mat3 b)
+t_mat3	mat3_add(t_mat3 a, t_mat3 b)
 {
 	int i;
 	int j;
@@ -59,5 +71,5 @@ t_mat3 mat3_add(t_mat3 a, t_mat3 b)
 		}
 		++i;
 	}
-	return a;
+	return (a);
 }
