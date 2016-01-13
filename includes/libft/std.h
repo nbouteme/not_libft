@@ -6,12 +6,12 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 11:20:53 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/12/09 15:55:25 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/01/13 18:46:43 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef STD_H
+# define STD_H
 
 # include <string.h>
 
@@ -38,9 +38,10 @@ typedef int			(*t_lstcmpup)	(const t_list *, const t_list *, void *);
 typedef int			(*t_lstcmp)		(const t_list *, const t_list *);
 typedef int			(*t_keepup)		(t_list *, void *);
 typedef int			(*t_keep)		(t_list *);
-typedef const t_list t_clist;
+typedef const t_list	t_clist;
 
-t_list				*ft_lstreduceup(t_clist *l, t_clist *init, t_afup f, void *up);
+t_list				*ft_lstreduceup(t_clist *l, t_clist *init, t_afup f,
+									void *up);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 char				*ft_strnstr(const char *s1, const char *s2, size_t n);
