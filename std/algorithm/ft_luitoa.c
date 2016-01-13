@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:54:07 by nbouteme          #+#    #+#             */
-/*   Updated: 2015/11/30 14:34:03 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/01/13 16:51:27 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char		*ft_luitoa(unsigned long n, char *base)
 	int		i;
 	int		bl;
 
-	bl = strlen(base);
+	bl = ft_strlen(base);
 	m = ft_strnew(65);
 	if (!m)
 		return (m);
