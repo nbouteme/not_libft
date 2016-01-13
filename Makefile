@@ -60,13 +60,13 @@ all: $(NAME)
 	@$(DEP_ECHO) LDEP := $(LDEP)
 	@$(DEP_ECHO) SUPF := $(SUPF)
 %.o: %.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+	@$(CC) $(CFLAGS) -c $^ -o $@
 	@$(ECHO) -e "\033[0;32m[✓] Built C object" $@
 
 $(NAME): $(OBJ)
-	@$(ECHO) -e "\033[0;34m--------------------------------"
+	@$(ECHO) "\033[0;34m--------------------------------"
 	@ld -r $(OBJ) -o $(NAME)
-	@$(ECHO) -e "\033[0;31m[✓] Linked C library" $(NAME)
+	@$(ECHO) "\033[0;31m[✓] Linked C library" $(NAME)
 
 .PHONY: clean fclean re
 
