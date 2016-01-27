@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 11:20:53 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/01/27 20:20:38 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/01/27 20:37:29 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct		s_bnode
 	struct s_bnode	*prev;
 }					t_bnode;
 
-typedef t_bnode t_listhead;
+typedef t_bnode t_dlisthead;
 
 typedef struct		s_list
 {
@@ -38,7 +38,7 @@ typedef struct		s_list
 	};
 	void			*content;
 	size_t			content_size;
-}					t_list;
+}					t_dlist;
 
 # else
 
@@ -106,13 +106,17 @@ typedef struct		s_mapup_wrapper
 }					t_mapup_wrapper;
 
 t_listhead			*ftext_lstnew();
+
+t_list				*ftext_lstnewelem(const void* content, size_t size);
+t_list				*ftext_lstnewelemown(void* content, size_t size);
+
 void				ftext_lstdel(t_listhead **alst, t_destructor del);
 void				ftext_lstiter(t_list *lst, t_iter f);
 void				ftext_lstiterup(t_list *lst, t_iterup f, void *up);
 void				ftext_lstpush_back(t_listhead *lst, t_list *new);
 void				ftext_lstpush_front(t_listhead *alst, t_list *new);
-t_list				*ftext_lstmap(t_list *lst, t_gen f);
-t_list				*ftext_lstmapup(t_list *l, t_genup f, void *up);
+t_listhead			*ftext_lstmap(t_list *lst, t_gen f);
+t_listhead			*ftext_lstmapup(t_list *l, t_genup f, void *up);
 void				ftext_lstdelone(t_list **alst, t_destructor del);
 
 t_list				*ftext_lstreduce(t_clist *l, t_clist *init, t_af f);
