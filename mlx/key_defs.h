@@ -6,12 +6,12 @@
 /*   By: nbouteme <nbouteme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:52:07 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/01/13 19:22:48 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/01/27 16:56:57 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEY_DEF_H
-# define KEY_DEF_H
+#ifndef KEY_DEFS_H
+# define KEY_DEFS_H
 
 # ifdef __linux__
 #  include <X11/keysym.h>

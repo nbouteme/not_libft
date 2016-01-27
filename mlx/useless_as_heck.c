@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 19:28:59 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/01/13 19:41:06 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/01/27 16:51:53 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,8 @@ int			disp_loop(t_display *d)
 	return (0);
 }
 
-#include <time.h>
-
-int event_loop(t_display *d)
+int			event_loop(t_display *d)
 {
-	static clock_t a = 42;
-	static clock_t i = 0;
-	clock_t b;
-
-	if(i % 2) a = clock();
-	b = clock();
-	if(i % 2 == 0)
-		printf("%zu\n", b - a);
-	++i;
 	disp_handle_key(d);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 18:41:44 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/01/13 18:43:51 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/01/27 16:58:08 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void			*mlx_xpm_to_image(void *mlx_ptr, char **xpm_data, int *width,
 								int *height);
 void			*mlx_xpm_file_to_image(void *mlx_ptr, char *filename,
 									int *width, int *height);
-int				mlx_hook(void *win, int x_event, int x_mask, 
+int				mlx_hook(void *win, int x_event, int x_mask,
 						int (*funct)(), void *param);
 int				mlx_do_sync(void *xvar);
 

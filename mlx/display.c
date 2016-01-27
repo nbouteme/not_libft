@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 19:17:17 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/01/13 19:48:38 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/01/27 16:50:56 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ static void	render_line(t_display *d, t_mat4 mvp, t_vertex *ptr)
 	int			i;
 
 	i = 0;
-	while (i < (2 * (2 * (d->model->h) * (d->model->w) - d->model->w - d->model->h)))
+	while (i < (2 * (2 * (d->model->h) * (d->model->w)
+					- d->model->w - d->model->h)))
 	{
 		a = ptr[d->model->elements[i++]];
 		b = ptr[d->model->elements[i++]];
@@ -63,7 +64,7 @@ int			disp_expose(t_display *d)
 	t_mat4		tmp;
 	t_mat4		mvp;
 	t_vec3		tmp3;
-	
+
 	free(d->camera);
 	tmp3 = vec3_copy(vec3_zero());
 	(*tmp3)[0] = d->model->w / 2;
