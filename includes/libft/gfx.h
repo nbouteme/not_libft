@@ -26,6 +26,7 @@ typedef struct				s_point
 	int						w;
 	int						h;
 }							t_point;
+
 typedef struct				s_graphics
 {
 	void					*int_img;
@@ -56,6 +57,7 @@ typedef struct				s_model
 	int						h;
 	size_t					e_sz;
 }							t_model;
+
 void						draw_point_bare(t_graphics *g, t_point pos);
 void						draw_point(t_graphics *g, t_point pos);
 void						draw_nline(t_graphics *g, t_vec4 n1, t_vec4 n2);
@@ -65,5 +67,8 @@ unsigned					get_pixel(t_graphics *g, t_point pos);
 int							is_outside(t_graphics *g, t_point a);
 void						present(t_graphics *g);
 void						clear_graphics(t_graphics *g);
+void						draw_line(t_graphics *g, t_point a, t_point b);
+int							disp_expose(t_display *d);
+void						draw_line_bare(t_graphics *g, t_point a, t_point b);
 
 #endif

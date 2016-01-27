@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clip.h                                             :+:      :+:    :+:   */
+/*   key_handle.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/13 18:49:19 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/01/13 18:49:49 by nbouteme         ###   ########.fr       */
+/*   Created: 2016/01/13 18:41:44 by nbouteme          #+#    #+#             */
+/*   Updated: 2016/01/13 18:43:51 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLIP_H
-# define CLIP_H
+#ifndef KEY_HANDLE_H
+#define KEY_HANDLE_H
 
-# include <libft/gfx.h>
-
-enum	e_rel
-{
-	IN = 0x00000000,
-	LEFT = 0x00000001,
-	RIGHT = 0x00000100,
-	TOP = 0x00010000,
-	BOT = 0x01000000
-};
-
-int clip(t_graphics *g, t_point *a, t_point *b);
+int set_key_handlers(t_display *d);
+int is_key_pressed(int key);
 
 #endif

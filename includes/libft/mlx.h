@@ -62,7 +62,16 @@ void			*mlx_xpm_to_image(void *mlx_ptr, char **xpm_data, int *width,
 								int *height);
 void			*mlx_xpm_file_to_image(void *mlx_ptr, char *filename,
 									int *width, int *height);
+int				mlx_hook(void *win, int x_event, int x_mask, 
+						int (*funct)(), void *param);
+int				mlx_do_sync(void *xvar);
+
+int				disp_key_released(int key);
+int				disp_key_pressed(int key);
+
 t_display		*new_display(t_model *m);
 void			run_display(t_display *d);
-
+int				disp_handle_key(t_display *d);
+int				is_key_pressed(int key);
+void			set_key_handlers(t_display *d);
 #endif

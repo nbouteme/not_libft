@@ -42,7 +42,7 @@ INCDIR = ./includes
 
 OBJ = $(SRC:.c=.o)
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -g
+CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -O3 -march=native -mtune=native
 
 ECHO = echo
 UNAME := $(shell uname)

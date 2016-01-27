@@ -34,10 +34,10 @@ void		draw_line_bare(t_graphics *g, t_point a, t_point b)
 {
 	int oh_boy[7];
 
-	oh_boy[0] = abs(b.w - a.w);
-	oh_boy[1] = abs(b.h - a.h);
-	oh_boy[2] = sign(b.w - a.w);
-	oh_boy[3] = sign(b.h - a.h);
+	oh_boy[0] = ABS(b.w - a.w);
+	oh_boy[1] = ABS(b.h - a.h);
+	oh_boy[2] = SIGN(b.w - a.w);
+	oh_boy[3] = SIGN(b.h - a.h);
 	if ((oh_boy[4] = oh_boy[1] > oh_boy[0]))
 		ft_swap_any(&oh_boy[0], &oh_boy[1], sizeof(int));
 	oh_boy[5] = 2 * oh_boy[1] - oh_boy[0];

@@ -33,5 +33,6 @@ void			draw_point(t_graphics *g, t_point pos);
 void			present(t_graphics *g);
 void			draw_nline(t_graphics *g, t_vec4 n1, t_vec4 n2);
 void			clear_graphics(t_graphics *g);
+void			draw_line_bare(t_graphics *g, t_point a, t_point b);
 
 #endif

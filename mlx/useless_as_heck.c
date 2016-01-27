@@ -26,6 +26,23 @@ int			disp_loop(t_display *d)
 	return (0);
 }
 
+#include <time.h>
+
+int event_loop(t_display *d)
+{
+	static clock_t a = 42;
+	static clock_t i = 0;
+	clock_t b;
+
+	if(i % 2) a = clock();
+	b = clock();
+	if(i % 2 == 0)
+		printf("%zu\n", b - a);
+	++i;
+	disp_handle_key(d);
+	return (0);
+}
+
 t_display	*new_display(t_model *m)
 {
 	t_display *ret;
@@ -43,8 +60,9 @@ t_display	*new_display(t_model *m)
 	(*ret->position)[0] = 5.75;
 	(*ret->position)[1] = 5.75;
 	(*ret->position)[2] = 25.75;
-	mlx_key_hook(ret->win, &disp_handle_key, ret);
+	set_key_handlers(ret);
+	mlx_loop_hook(ret->conn, &event_loop, ret);
 	mlx_expose_hook(ret->win, &disp_expose, ret);
-	mlx_loop_hook(ret->conn, &disp_expose, ret);
+	mlx_do_key_autorepeaton(ret->conn);
 	return (ret);
 }
