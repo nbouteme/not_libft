@@ -42,7 +42,8 @@ INCDIR = ./includes
 
 OBJ = $(SRC:.c=.o)
 CC = clang
-CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -O3 -march=native -mtune=native
+WFLAGS = -Wall -Wextra -Werror -I$(INCDIR) 
+CFLAGS = -O3 -march=native -mtune=native
 
 ECHO = echo
 UNAME := $(shell uname)
@@ -60,7 +61,7 @@ all: $(NAME)
 	@$(DEP_ECHO) LDEP := $(LDEP)
 	@$(DEP_ECHO) SUPF := $(SUPF)
 %.o: %.c
-	@$(CC) $(CFLAGS) -c $^ -o $@
+	@$(CC) $(WFLAGS) $(CFLAGS) -c $^ -o $@
 	@$(ECHO) -e "\033[0;32m[✓] Built C object" $@
 
 $(NAME): $(OBJ)
