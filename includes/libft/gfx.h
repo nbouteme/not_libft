@@ -35,12 +35,14 @@ typedef struct				s_graphics
 	t_point					dim;
 	unsigned				color;
 }							t_graphics;
+
 typedef struct				s_sparse_model
 {
-	t_list					*verts;
+	t_dlisthead				*verts;
 	int						w;
 	int						h;
 }							t_sparse_model;
+
 typedef struct				s_vertex
 {
 	int						x;
@@ -48,6 +50,7 @@ typedef struct				s_vertex
 	int						z;
 	unsigned				color;
 }							t_vertex;
+
 typedef struct				s_model
 {
 	t_vertex				*verts;

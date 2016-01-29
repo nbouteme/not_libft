@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <libft/std.h>
+#include "lst_wrappers.h"
 
 static void wrapper(t_dlist *l, t_mapup_wrapper *tmw)
 {

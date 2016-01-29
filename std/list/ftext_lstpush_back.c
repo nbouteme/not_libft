@@ -14,7 +14,7 @@
 
 void	ftext_lstpush_back(t_dlisthead *head, t_dlist *new)
 {
-	new->next = head;
+	new->next = (void*)head;
 	new->prev = head->prev;
 	head->prev->next = (void*)new;
 	head->prev = (void*)new;

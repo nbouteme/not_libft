@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define LIBFT_EXT
 #include <libft/std.h>
+#include "lst_wrappers.h"
 
 static void wrapper(t_dlist *l, t_map_wrapper *tmw)
 {

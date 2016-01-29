@@ -18,7 +18,7 @@ t_dlisthead			*ftext_lstnew()
 	t_dlisthead *head;
 
 	head = malloc(sizeof(*head));
-	head->next = head;
-	head->prev = head;
+	head->next = (void*)head;
+	head->prev = (void*)head;
 	return (head);
 }
