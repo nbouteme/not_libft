@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftext_lstdel.c                                     :+:      :+:    :+:   */
+/*   ftext_lstfilter.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,23 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft/std.h>
+#include "lst_wrappers.h"
 #include <stdlib.h>
 
-static void default_dtor(void *c, size_t n)
+static t_dlist	*shallow_copy(const t_dlist *elem)
 {
-	(void)n;
-	free(c);
+	return (ft_memcpy(malloc(sizeof(*elem)),
+					elem,
+					sizeof(*elem)));
 }
 
-static void wrapper(t_dlist *l, t_destructor del)
+static void	*wrapper(t_dlist *elem, t_reduce_wrapper *args)
 {
-	ftext_lstdelone(l, del);
+	if (args->f(elem))
+		ftext_lstpush_back(args->h, args->c(elem));
+	return (args);
 }
 
-void ftext_lstdel(t_dlisthead **head, t_destructor del)
+t_dlisthead	*ftext_lstfilter(t_dlisthead *lst, t_dkeep f, t_dcopy c)
 {
-	ftext_lstiterup(*head, (void*)wrapper, del ? del : default_dtor);
-	free(*head);
-	*head = 0;
+	t_reduce_wrapper args;
+
+	c = c ? c : shallow_copy;
+	args = (t_reduce_wrapper){ f, ftext_lstnew(), c };
+	ftext_lstiterup(lst, (void*)wrapper, &args);
+	return (args.h);
 }

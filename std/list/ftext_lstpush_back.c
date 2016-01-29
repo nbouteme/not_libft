@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define LIBFT_EXT
 #include <libft/std.h>
 
-void	ftext_lstpush_back(t_listhead *head, t_list *new)
+void	ftext_lstpush_back(t_dlisthead *head, t_dlist *new)
 {
 	new->next = head;
 	new->prev = head->prev;

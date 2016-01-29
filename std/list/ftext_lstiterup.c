@@ -10,17 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define LIBFT_EXT
 #include <libft/std.h>
 
-void	ftext_lstiterup(t_listhead *head, t_iter f, void *up)
+void	ftext_lstiterup(t_dlisthead *head, t_diterup f, void *up)
 {
-	t_list *first;
+	t_dlist *first;
+	void *tmp;
 
 	first = (void *)head->next;
-	while (first != head)
+	while ((void *)first != (void *)head)
 	{
+		tmp = first->next;
 		f(first, up);
-		first = first->next;
+		first = tmp;
 	}
 }

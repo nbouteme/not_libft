@@ -10,21 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define LIBFT_EXT
 #include <libft/std.h>
 
-static void wrapper(t_list *l, t_mapup_wrapper *tmw)
+static void wrapper(t_dlist *l, t_mapup_wrapper *tmw)
 {
-	ftext_lstpush_back(tmw->lst, tmw->f(l, tmw->up));
+	ftext_lstpush_back(tmw->h, tmw->f(l, tmw->up));
 }
 
-t_listhead	*ftext_lstmapup(t_listhead *lst, t_gen f, void *up);
+t_dlisthead	*ftext_lstmapup(t_dlisthead *lst, t_dgenup f, void *up)
 {
-	t_listhead		newlst;
-	t_map_wrapper	tmw;
+	t_dlisthead		*newlst;
+	t_mapup_wrapper	tmw;
 
 	newlst = ftext_lstnew();
-	tmw = (t_map_wrapper){f, newlst, up};
-	ftext_lstiterup(lst, wrapper, &tmw);
+	tmw = (t_mapup_wrapper){f, newlst, up};
+	ftext_lstiterup(lst, (void*)wrapper, &tmw);
 	return (newlst);
 }

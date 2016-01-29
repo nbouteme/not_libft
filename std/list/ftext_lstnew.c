@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define LIBFT_EXT
 #include <libft/std.h>
+#include <stdlib.h>
 
-t_listhead			*ftext_lstnew()
+t_dlisthead			*ftext_lstnew()
 {
-	t_listhead *head;
+	t_dlisthead *head;
 
 	head = malloc(sizeof(*head));
 	head->next = head;

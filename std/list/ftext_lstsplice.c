@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftext_lstdel.c                                     :+:      :+:    :+:   */
+/*   ft_lstsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/27 19:37:31 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/01/27 20:03:38 by nbouteme         ###   ########.fr       */
+/*   Created: 2015/11/23 11:20:53 by nbouteme          #+#    #+#             */
+/*   Updated: 2016/01/13 19:14:00 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft/std.h>
-#include <stdlib.h>
 
-static void default_dtor(void *c, size_t n)
+void	ftext_lstsplice(t_dlist *first, t_dlist *last, t_dlist *pos)
 {
-	(void)n;
-	free(c);
-}
+	t_dlist *tmp;
 
-static void wrapper(t_dlist *l, t_destructor del)
-{
-	ftext_lstdelone(l, del);
-}
-
-void ftext_lstdel(t_dlisthead **head, t_destructor del)
-{
-	ftext_lstiterup(*head, (void*)wrapper, del ? del : default_dtor);
-	free(*head);
-	*head = 0;
+	if (first == last || last == pos)
+		return ;
+	last->prev->next = pos;
+	first->prev->next = last;
+	pos->prev->next = first;
+	tmp = pos->prev;
+	pos->prev = last->prev;
+	last->prev = first->prev;
+	first->prev = tmp;
 }

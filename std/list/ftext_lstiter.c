@@ -10,17 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define LIBFT_EXT
 #include <libft/std.h>
 
-void	ftext_lstiter(t_listhead *head, t_iter f)
+void	ftext_lstiter(t_dlisthead *head, t_diter f)
 {
-	t_list *first;
+	t_dlist *first;
+	void *tmp;
 
-	first = (void *)head->next;
-	while (first != head)
+	first = head->next;
+	while ((void*)first != (void*)head)
 	{
+		tmp = first->next;
 		f(first);
-		first = first->next;
+		first = tmp;
 	}
 }

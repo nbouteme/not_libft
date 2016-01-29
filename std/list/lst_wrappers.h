@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftext_lstdel.c                                     :+:      :+:    :+:   */
+/*   lst_wrappers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,23 +10,37 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef LST_WRAPPERS_H
+# define LST_WRAPPERS_H
+
 #include <libft/std.h>
-#include <stdlib.h>
 
-static void default_dtor(void *c, size_t n)
+typedef struct		s_map_wrapper
 {
-	(void)n;
-	free(c);
-}
+	t_dgen			f;
+	t_dlisthead		*h;
+}					t_map_wrapper;
 
-static void wrapper(t_dlist *l, t_destructor del)
+typedef struct		s_mapup_wrapper
 {
-	ftext_lstdelone(l, del);
-}
+	t_dgenup		f;
+	t_dlisthead		*h;
+	void			*up;
+}					t_mapup_wrapper;
 
-void ftext_lstdel(t_dlisthead **head, t_destructor del)
+typedef struct		s_reduce_wrapper
 {
-	ftext_lstiterup(*head, (void*)wrapper, del ? del : default_dtor);
-	free(*head);
-	*head = 0;
-}
+	t_dkeep			f;
+	t_dlisthead		*h;
+	t_dcopy			c;
+}					t_reduce_wrapper;
+
+typedef struct		s_reduceup_wrapper
+{
+	t_dkeepup		f;
+	t_dlisthead		*h;
+	t_dcopy			c;
+	void			*u;
+}					t_reduceup_wrapper;
+
+#endif

@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define LIBFT_EXT
 #include <libft/std.h>
+#include <stdlib.h>
 
-t_list	*ftext_lstnewelem(const void* content, size_t size)
+t_dlist	*ftext_lstnewelem(const void* content, size_t size)
 {
-	t_list *newelem;
+	t_dlist *newelem;
 
 	newelem = malloc(sizeof(*newelem));
 	newelem->next = 0;
 	newelem->prev = 0;
-	newelem->size = size;
+	newelem->content_size = size;
 	newelem->content = ft_memcpy(malloc(size), content, size);
 	return (newelem);
 }

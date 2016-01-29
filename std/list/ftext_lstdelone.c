@@ -10,7 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void				ftext_lstdelone(t_list *alst, t_destructor del)
+#include <libft/std.h>
+#include <stdlib.h>
+
+void				ftext_lstdelone(t_dlist *alst, t_destructor del)
 {
 	alst->next->prev = alst->prev;
 	alst->prev->next = alst->next;

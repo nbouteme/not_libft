@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftext_lstdel.c                                     :+:      :+:    :+:   */
+/*   ftext_lstreduce.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,22 +11,16 @@
 /* ************************************************************************** */
 
 #include <libft/std.h>
-#include <stdlib.h>
 
-static void default_dtor(void *c, size_t n)
+void *ftext_lstreduce(t_dlisthead *h, void *init, t_daf f)
 {
-	(void)n;
-	free(c);
-}
+	t_dlist *first;
 
-static void wrapper(t_dlist *l, t_destructor del)
-{
-	ftext_lstdelone(l, del);
-}
-
-void ftext_lstdel(t_dlisthead **head, t_destructor del)
-{
-	ftext_lstiterup(*head, (void*)wrapper, del ? del : default_dtor);
-	free(*head);
-	*head = 0;
+	first = h->next;
+	while ((void*)first != (void*)h)
+	{
+		init = f(init, first);
+		first = first->next;
+	}
+	return (init);
 }

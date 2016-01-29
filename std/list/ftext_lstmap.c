@@ -13,18 +13,18 @@
 #define LIBFT_EXT
 #include <libft/std.h>
 
-static void wrapper(t_list *l, t_map_wrapper *tmw)
+static void wrapper(t_dlist *l, t_map_wrapper *tmw)
 {
-	ftext_lstpush_back(tmw->lst, tmw->f(l));
+	ftext_lstpush_back(tmw->h, tmw->f(l));
 }
 
-t_listhead	*ftext_lstmap(t_listhead *lst, t_gen f);
+t_dlisthead	*ftext_lstmap(t_dlisthead *lst, t_dgen f)
 {
-	t_listhead		newlst;
+	t_dlisthead		*newlst;
 	t_map_wrapper	tmw;
 
 	newlst = ftext_lstnew();
 	tmw = (t_map_wrapper){f, newlst};
-	ftext_lstiterup(lst, wrapper, &tmw);
+	ftext_lstiterup(lst, (void*)wrapper, &tmw);
 	return (newlst);
 }
