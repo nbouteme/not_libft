@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 11:20:53 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/01/27 20:37:29 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/01/31 22:50:34 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void				ft_lstiter(t_list *lst, t_iter f);
 t_list				*ft_lstmap(t_list *lst, t_gen f);
 
 t_dlisthead			*ftext_lstnew();
+t_dlist				*ftext_lstfind(t_dlisthead *lst, t_dkeepup f, void *up);
 t_dlist				*ftext_lstnewelem(const void* content, size_t size);
 t_dlist				*ftext_lstnewelemown(void* content, size_t size);
 void				ftext_lstdel(t_dlisthead **alst, t_destructor del);
