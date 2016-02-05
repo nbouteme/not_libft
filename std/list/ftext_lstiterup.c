@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 19:44:18 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/01/27 19:44:30 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/02/05 02:54:51 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ftext_lstiterup(t_dlisthead *head, t_diterup f, void *up)
 {
-	t_dlist *first;
-	void *tmp;
+	t_dlist	*first;
+	void	*tmp;
 
 	first = (void *)head->next;
 	while ((void *)first != (void *)head)

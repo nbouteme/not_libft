@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 19:37:31 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/01/27 20:03:38 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/02/05 02:57:52 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ static t_dlist	*shallow_copy(const t_dlist *elem)
 					sizeof(*elem)));
 }
 
-static void	*wrapper(t_dlist *elem, t_reduce_wrapper *args)
+static void		*wrapper(t_dlist *elem, t_reduce_wrapper *args)
 {
 	if (args->f(elem))
 		ftext_lstpush_back(args->h, args->c(elem));
 	return (args);
 }
 
-t_dlisthead	*ftext_lstfilter(t_dlisthead *lst, t_dkeep f, t_dcopy c)
+t_dlisthead		*ftext_lstfilter(t_dlisthead *lst, t_dkeep f, t_dcopy c)
 {
 	t_reduce_wrapper args;
 

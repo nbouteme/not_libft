@@ -6,13 +6,13 @@
 /*   By: nbouteme <nbouteme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 15:39:17 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/01/13 19:13:16 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/02/05 02:53:03 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft/std.h>
 
-static void lst_merge(t_dlisthead *a, t_dlisthead *b, t_dlstcmp cmp)
+static void	lst_merge(t_dlisthead *a, t_dlisthead *b, t_dlstcmp cmp)
 {
 	t_dlist *f1;
 	t_dlist *l1;
@@ -41,7 +41,8 @@ static void lst_merge(t_dlisthead *a, t_dlisthead *b, t_dlstcmp cmp)
 ** todo: Refaire sans recursive
 ** todo: utiliser dtor dans objet
 */
-void			ftext_lstsort(t_dlisthead *head, t_dlstcmp cmp)
+
+void		ftext_lstsort(t_dlisthead *head, t_dlstcmp cmp)
 {
 	t_dlisthead *a;
 	t_dlisthead *b;

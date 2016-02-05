@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 11:20:53 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/01/31 22:50:34 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/02/05 03:01:33 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <string.h>
 
-struct				s_dlist;
+struct s_dlist;
 
 typedef struct		s_bnode
 {
@@ -23,19 +23,12 @@ typedef struct		s_bnode
 	struct s_dlist	*prev;
 }					t_bnode;
 
-typedef t_bnode t_dlisthead;
+typedef t_bnode		t_dlisthead;
 
 typedef struct		s_dlist
 {
-	union
-	{
-		t_bnode		_internal_node;
-		struct
-		{
-			struct		s_dlist	*next;
-			struct		s_dlist	*prev;
-		};
-	};
+	struct s_dlist	*next;
+	struct s_dlist	*prev;
 	void			*content;
 	size_t			content_size;
 }					t_dlist;
@@ -99,8 +92,8 @@ t_list				*ft_lstmap(t_list *lst, t_gen f);
 
 t_dlisthead			*ftext_lstnew();
 t_dlist				*ftext_lstfind(t_dlisthead *lst, t_dkeepup f, void *up);
-t_dlist				*ftext_lstnewelem(const void* content, size_t size);
-t_dlist				*ftext_lstnewelemown(void* content, size_t size);
+t_dlist				*ftext_lstnewelem(const void *content, size_t size);
+t_dlist				*ftext_lstnewelemown(void *content, size_t size);
 void				ftext_lstdel(t_dlisthead **alst, t_destructor del);
 void				ftext_lstiter(t_dlisthead *lst, t_diter f);
 void				ftext_lstiterup(t_dlisthead *lst, t_diterup f, void *up);
@@ -117,9 +110,10 @@ t_dlisthead			*ftext_lstfilterup(t_dlisthead *lst, t_dkeepup f,
 									t_dcopy c, void *u);
 void				ftext_lstsplice(t_dlist *first, t_dlist *last,
 									t_dlist *pos);
-void				ftext_lstsplit(t_dlisthead *head, t_dlisthead **a, t_dlisthead **b);
+void				ftext_lstsplit(t_dlisthead *head, t_dlisthead **a,
+								t_dlisthead **b);
 void				ftext_lstsort(t_dlisthead *head, t_dlstcmp cmp);
-void				ftext_lstsortup(t_dlisthead *head, t_dlstcmpup cmp, void *up);
+void				ftext_lstsortup(t_dlisthead *h, t_dlstcmpup c, void *u);
 
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
