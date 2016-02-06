@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 11:20:53 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/02/05 03:01:33 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/02/06 06:58:20 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct		s_list
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
-	struct s_list	*prev;
 }					t_list;
 
 typedef t_dlist		*(*t_dgen)		(t_dlist *);
