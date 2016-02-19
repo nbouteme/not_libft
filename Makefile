@@ -43,8 +43,8 @@ INCDIR = ./includes
 OBJ = $(SRC:.c=.o)
 CC = clang
 WFLAGS = -Wall -Wextra -Werror -I$(INCDIR) 
-CFLAGS = -O3 -march=native -mtune=native -ffinite-math-only -funsafe-math-optimizations -fno-math-errno -ffast-math
-#CFLAGS = -g
+#CFLAGS = -O3 -march=native -mtune=native -ffinite-math-only -funsafe-math-optimizations -fno-math-errno -ffast-math
+CFLAGS = -g
 ECHO = echo
 UNAME := $(shell uname)
 ifeq ($(UNAME), Linux)

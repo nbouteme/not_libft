@@ -71,6 +71,21 @@ typedef int			(*t_keepup)		(t_list *, void *);
 typedef int			(*t_keep)		(t_list *);
 typedef const t_list	t_clist;
 
+typedef unsigned char	u8;
+typedef unsigned short	u16;
+typedef unsigned int	u32;
+typedef unsigned long	u64;
+
+typedef signed char		s8;
+typedef signed short	s16;
+typedef signed int		s32;
+typedef signed long		s64;
+
+typedef char	i8;
+typedef short	i16;
+typedef int		i32;
+typedef long	i64;
+
 t_list				*ft_lstreduceup(t_clist *l, t_clist *i, t_afup f, void *u);
 void				ft_lstsortup(t_list **head, t_lstcmpup cmp, void *up);
 t_list				*ft_lstnew(void const *content, size_t content_size);
@@ -109,10 +124,11 @@ t_dlisthead			*ftext_lstfilterup(t_dlisthead *lst, t_dkeepup f,
 									t_dcopy c, void *u);
 void				ftext_lstsplice(t_dlist *first, t_dlist *last,
 									t_dlist *pos);
-void				ftext_lstsplit(t_dlisthead *head, t_dlisthead **a,
-								t_dlisthead **b);
+void				ftext_lstsplit(t_dlisthead *head, t_dlisthead *a,
+								t_dlisthead *b);
 void				ftext_lstsort(t_dlisthead *head, t_dlstcmp cmp);
 void				ftext_lstsortup(t_dlisthead *h, t_dlstcmpup c, void *u);
+t_dlisthead			*ftext_lstinit(t_dlisthead *this);
 
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);

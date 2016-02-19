@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftext_lstnew.c                                     :+:      :+:    :+:   */
+/*   ftext_lstinit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,9 +11,10 @@
 /* ************************************************************************** */
 
 #include <libft/std.h>
-#include <stdlib.h>
 
-t_dlisthead			*ftext_lstnew(void)
+t_dlisthead			*ftext_lstinit(t_dlisthead *this)
 {
-	return (ftext_lstinit(malloc(sizeof(t_dlisthead))));
+	this->next = (void*)this;
+	this->prev = (void*)this;
+	return (this);
 }

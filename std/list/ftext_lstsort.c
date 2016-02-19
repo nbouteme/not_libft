@@ -44,14 +44,14 @@ static void	lst_merge(t_dlisthead *a, t_dlisthead *b, t_dlstcmp cmp)
 
 void		ftext_lstsort(t_dlisthead *head, t_dlstcmp cmp)
 {
-	t_dlisthead *a;
-	t_dlisthead *b;
+	t_dlisthead a;
+	t_dlisthead b;
 
 	if (!head || head->next == head->prev)
 		return ;
 	ftext_lstsplit(head, &a, &b);
-	ftext_lstsort(a, cmp);
-	ftext_lstsort(b, cmp);
-	lst_merge(a, b, cmp);
-	ftext_lstdel(&b, 0);
+	ftext_lstsort(&a, cmp);
+	ftext_lstsort(&b, cmp);
+	lst_merge(&a, &b, cmp);
+	ftext_lstsplice(a.next, a.next->prev, head->next);
 }
