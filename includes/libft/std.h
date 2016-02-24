@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 11:20:53 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/02/06 06:58:20 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/02/24 13:49:29 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,20 +71,20 @@ typedef int			(*t_keepup)		(t_list *, void *);
 typedef int			(*t_keep)		(t_list *);
 typedef const t_list	t_clist;
 
-typedef unsigned char	u8;
-typedef unsigned short	u16;
-typedef unsigned int	u32;
-typedef unsigned long	u64;
+typedef unsigned char	t_u8;
+typedef unsigned short	t_u16;
+typedef unsigned int	t_u32;
+typedef unsigned long	t_u64;
 
-typedef signed char		s8;
-typedef signed short	s16;
-typedef signed int		s32;
-typedef signed long		s64;
+typedef signed char		t_s8;
+typedef signed short	t_s16;
+typedef signed int		t_s32;
+typedef signed long		t_s64;
 
-typedef char	i8;
-typedef short	i16;
-typedef int		i32;
-typedef long	i64;
+typedef char	t_i8;
+typedef short	t_i16;
+typedef int		t_i32;
+typedef long	t_i64;
 
 t_list				*ft_lstreduceup(t_clist *l, t_clist *i, t_afup f, void *u);
 void				ft_lstsortup(t_list **head, t_lstcmpup cmp, void *up);
