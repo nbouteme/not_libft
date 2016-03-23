@@ -12,14 +12,14 @@
 
 #include <libft/std.h>
 
-void	ftext_lstsplit(t_dlisthead *head, t_dlisthead **a, t_dlisthead **b)
+void	ftext_lstsplit(t_dlisthead *head, t_dlisthead *a, t_dlisthead *b)
 {
 	int		i;
 	t_dlist	*l;
 	t_dlist	*p;
 
-	*a = ftext_lstnew();
-	*b = ftext_lstnew();
+	ftext_lstinit(a);
+	ftext_lstinit(b);
 	l = head->next;
 	p = l;
 	i = 0;
@@ -30,7 +30,6 @@ void	ftext_lstsplit(t_dlisthead *head, t_dlisthead **a, t_dlisthead **b)
 		++i;
 		l = l->next;
 	}
-	ftext_lstsplice(head->next, p, (*a)->next);
-	ftext_lstsplice(p, l, (*b)->next);
-	ftext_lstdel(&head, 0);
+	ftext_lstsplice(head->next, p, a->next);
+	ftext_lstsplice(p, l, b->next);
 }

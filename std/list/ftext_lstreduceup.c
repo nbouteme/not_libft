@@ -6,13 +6,13 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 19:37:31 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/01/27 20:03:38 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/02/05 02:53:23 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft/std.h>
 
-void *ftext_lstreduceup(t_dlisthead *h, void *init, t_dafup f, void *up)
+void	*ftext_lstreduceup(t_dlisthead *h, void *init, t_dafup f, void *up)
 {
 	t_dlist *first;
 

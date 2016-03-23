@@ -6,14 +6,14 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 19:53:07 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/01/27 20:01:14 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/02/05 02:54:29 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft/std.h>
 #include "lst_wrappers.h"
 
-static void wrapper(t_dlist *l, t_mapup_wrapper *tmw)
+static void	wrapper(t_dlist *l, t_mapup_wrapper *tmw)
 {
 	ftext_lstpush_back(tmw->h, tmw->f(l, tmw->up));
 }

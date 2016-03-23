@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 11:20:53 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/01/31 22:50:34 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/02/24 13:49:29 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <string.h>
 
-struct				s_dlist;
+struct s_dlist;
 
 typedef struct		s_bnode
 {
@@ -23,19 +23,12 @@ typedef struct		s_bnode
 	struct s_dlist	*prev;
 }					t_bnode;
 
-typedef t_bnode t_dlisthead;
+typedef t_bnode		t_dlisthead;
 
 typedef struct		s_dlist
 {
-	union
-	{
-		t_bnode		_internal_node;
-		struct
-		{
-			struct		s_dlist	*next;
-			struct		s_dlist	*prev;
-		};
-	};
+	struct s_dlist	*next;
+	struct s_dlist	*prev;
 	void			*content;
 	size_t			content_size;
 }					t_dlist;
@@ -45,7 +38,6 @@ typedef struct		s_list
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
-	struct s_list	*prev;
 }					t_list;
 
 typedef t_dlist		*(*t_dgen)		(t_dlist *);
@@ -79,6 +71,21 @@ typedef int			(*t_keepup)		(t_list *, void *);
 typedef int			(*t_keep)		(t_list *);
 typedef const t_list	t_clist;
 
+typedef unsigned char	t_u8;
+typedef unsigned short	t_u16;
+typedef unsigned int	t_u32;
+typedef unsigned long	t_u64;
+
+typedef signed char		t_s8;
+typedef signed short	t_s16;
+typedef signed int		t_s32;
+typedef signed long		t_s64;
+
+typedef char	t_i8;
+typedef short	t_i16;
+typedef int		t_i32;
+typedef long	t_i64;
+
 t_list				*ft_lstreduceup(t_clist *l, t_clist *i, t_afup f, void *u);
 void				ft_lstsortup(t_list **head, t_lstcmpup cmp, void *up);
 t_list				*ft_lstnew(void const *content, size_t content_size);
@@ -99,8 +106,8 @@ t_list				*ft_lstmap(t_list *lst, t_gen f);
 
 t_dlisthead			*ftext_lstnew();
 t_dlist				*ftext_lstfind(t_dlisthead *lst, t_dkeepup f, void *up);
-t_dlist				*ftext_lstnewelem(const void* content, size_t size);
-t_dlist				*ftext_lstnewelemown(void* content, size_t size);
+t_dlist				*ftext_lstnewelem(const void *content, size_t size);
+t_dlist				*ftext_lstnewelemown(void *content, size_t size);
 void				ftext_lstdel(t_dlisthead **alst, t_destructor del);
 void				ftext_lstiter(t_dlisthead *lst, t_diter f);
 void				ftext_lstiterup(t_dlisthead *lst, t_diterup f, void *up);
@@ -117,9 +124,11 @@ t_dlisthead			*ftext_lstfilterup(t_dlisthead *lst, t_dkeepup f,
 									t_dcopy c, void *u);
 void				ftext_lstsplice(t_dlist *first, t_dlist *last,
 									t_dlist *pos);
-void				ftext_lstsplit(t_dlisthead *head, t_dlisthead **a, t_dlisthead **b);
+void				ftext_lstsplit(t_dlisthead *head, t_dlisthead *a,
+								t_dlisthead *b);
 void				ftext_lstsort(t_dlisthead *head, t_dlstcmp cmp);
-void				ftext_lstsortup(t_dlisthead *head, t_dlstcmpup cmp, void *up);
+void				ftext_lstsortup(t_dlisthead *h, t_dlstcmpup c, void *u);
+t_dlisthead			*ftext_lstinit(t_dlisthead *this);
 
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
