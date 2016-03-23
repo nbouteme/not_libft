@@ -65,7 +65,7 @@ char		**ft_strsplit(char const *str, char c)
 	{
 		while (*s && *s != c)
 			++s;
-		if (!(ret[i] = ft_strnew(s - str)))
+		if (!(ret[i] = ft_strnew(s - str + 1)))
 			return (free_array(ret, i));
 		ret[i] = ft_strncpy(ret[i], str, s - str);
 		while (*s && *s == c)

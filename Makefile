@@ -41,9 +41,9 @@ $(foreach sublib, $(BUILDLIB), $(eval SRC += $(shell find $(sublib) | grep \\.c$
 INCDIR = ./includes
 
 OBJ = $(SRC:.c=.o)
-CC = clang
+CC = gcc
 WFLAGS = -Wall -Wextra -Werror -I$(INCDIR) 
-CFLAGS = -O3 -march=native -mtune=native -ffinite-math-only -funsafe-math-optimizations -fno-math-errno -ffast-math
+CFLAGS = -ffat-lto-objects -flto -O3 -march=native -mtune=native -ffinite-math-only -funsafe-math-optimizations -fno-math-errno -ffast-math
 #CFLAGS = -g
 ECHO = echo
 UNAME := $(shell uname)
