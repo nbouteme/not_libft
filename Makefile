@@ -43,7 +43,7 @@ INCDIR = ./includes
 OBJ = $(SRC:.c=.o)
 CC = gcc
 WFLAGS = -Wall -Wextra -Werror -I$(INCDIR) 
-CFLAGS = -ffat-lto-objects -flto -O3 -march=native -mtune=native -ffinite-math-only -funsafe-math-optimizations -fno-math-errno -ffast-math
+CFLAGS = -flto -O3 -march=native -mtune=native -ffinite-math-only -funsafe-math-optimizations -fno-math-errno -ffast-math
 #CFLAGS = -g
 ECHO = echo
 UNAME := $(shell uname)
