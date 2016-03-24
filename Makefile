@@ -66,7 +66,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@$(ECHO) "\033[0;34m--------------------------------"
-	@ld -r $(OBJ) -o $(NAME)
+	@ld -r $(OBJ) -o $(NAME) -arch x86_64
 	@$(ECHO) "\033[0;31m[✓] Linked C library" $(NAME)
 
 .PHONY: clean fclean re
