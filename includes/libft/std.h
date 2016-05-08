@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 11:20:53 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/02/24 13:49:29 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/03/27 03:06:03 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ char				*ft_strmapw(char const *s, t_strmapw f);
 char				*ft_strcpy(char *dst, const char *src);
 void				*ft_memset(void *b, int c, size_t len);
 char				*ft_strmap(char const *s, t_strmap f);
+char				**ft_strsplitv(char const *s, int (*f)(int));
 char				**ft_strtok(const char *str, char c);
 int					ft_strindexof(const char *n, char c);
 char				*ft_strcat(char *s1, const char *s2);

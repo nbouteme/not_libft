@@ -6,7 +6,7 @@
 #    By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 11:08:14 by nbouteme          #+#    #+#              #
-#    Updated: 2016/01/06 18:16:58 by nbouteme         ###   ########.fr        #
+#    Updated: 2016/05/08 03:16:34 by nbouteme         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -36,15 +36,15 @@ $(if $(findstring gfx,$(BUILDLIB)), $(eval DEP += m))
 SRC =
 
 # no wildcard :^)
-$(foreach sublib, $(BUILDLIB), $(eval SRC += $(shell find $(sublib) | grep \\.c$)))
+$(eval SRC += $(shell find std -iname *.c ))
 
 INCDIR = ./includes
 
 OBJ = $(SRC:.c=.o)
 CC = gcc
-WFLAGS = -Wall -Wextra -Werror -I$(INCDIR) 
+WFLAGS = -Wall -Wextra -Werror -I$(INCDIR)
 CFLAGS = -flto -O3 -march=native -mtune=native -ffinite-math-only -funsafe-math-optimizations -fno-math-errno -ffast-math
-#CFLAGS = -g
+CFLAGS = -g
 ECHO = echo
 UNAME := $(shell uname)
 ifeq ($(UNAME), Linux)
