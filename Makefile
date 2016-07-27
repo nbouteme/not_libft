@@ -1,20 +1,21 @@
+SHELL = /bin/bash
 SYSTEM = $(shell uname)
 
 ifeq ($(SYSTEM),Linux)
+ECHO_SUFFIX = -e
+endif
 
 define redout
-$(shell echo -e '\033[0;31m'$1'\033[0m')
+$(shell printf "\033[0;31m%s\033[0m" "$(strip $1)")
 endef
 
 define blueout
-$(shell echo -e '\033[0;34m'$1'\033[0m')
+$(shell printf "\033[0;34m%s\033[0m" "$(strip $1)")
 endef
 
 define greenout
-$(shell echo -e '\033[0;32m'$1'\033[0m')
+$(shell printf "\033[0;32m%s\033[0m" "$(strip $1)")
 endef
-
-endif
 
 src_from_modules = $(shell find $1 -type f | grep -v '/\.' | grep '.c$$')
 nsrc_from_modules = $(shell find $1 -type f | grep -v '/\.' | grep '.c$$' | wc -l)
@@ -30,8 +31,10 @@ per = $(shell echo $1 / $2 \* 100 | bc)
 div = $(shell echo $1 / $2 | bc)
 add = $(shell echo $1 + $2 | bc)
 
+ifeq ($(SYSTEM),Linux)
+
 generate_header = $(shell \
-	LEN=$(call length,$1); \
+	LEN=$(call length,$1);\
 	LEN2=`echo $$LEN / 2 | bc`;\
 	LEN3=`echo 27 - $$LEN2 | bc`;\
 	LEN4=`echo $$LEN3 % 2 | bc`;\
@@ -40,6 +43,20 @@ generate_header = $(shell \
 	printf "%*s" $$LEN3 "" | tr ' ' '-';\
 	printf "%*s" $$LEN4 "" | tr ' ' '-';\
 )
+
+else
+
+generate_header =\
+$(eval LEN := $(call length,$1))\
+$(eval LEN2 := $(shell echo $(LEN) / 2 | bc))\
+$(eval LEN2 := $(shell echo $(LEN) / 2 | bc))\
+$(eval LEN3 := $(shell echo 27 - $(LEN2) | bc))\
+$(eval LEN4 := $(shell echo $(LEN2) % 2 | bc))\
+$(eval LINE1 = $(shell printf "%*s" $(LEN3) "" | tr ' ' '-'))\
+$(eval LINE2 = $(shell printf "%s" $1))\
+$(eval LINE3 = $(shell printf "%*s%*s" $(LEN3) "" $(LEN4) "" | tr ' ' '-'))\
+$(LINE1)$(LINE2)$(LINE3)
+endif
 
 BUILD_CFG := $(shell ls ./config/build_cfg.mk 2> /dev/null)
 LINK_CFG := $(shell ls ./config/link_cfg.mk 2> /dev/null)
@@ -92,9 +109,12 @@ CUR_MODULES := $(MODULES)
 LFLAGS_ACC := $(LFLAGS)
 CFLAGS_ACC := $(addprefix -I,$(INCLUDE_DIRS)) $(CFLAGS)
 
+S_LFLAGS_ACC := $(LFLAGS_$(SYSTEM))
+S_CFLAGS_ACC := $(CFLAGS_$(SYSTEM))
+
 S_FLAGS_ACC := $(SFLAGS_$(SYSTEM))
 
-all: print_head $(CUR_OUTPUT) 
+all: print_head $(CUR_OUTPUT)
 
 print_head:
 	$(info $(call redout,$(call generate_header,[Building\ $(CUR_NAME)...])))
@@ -111,21 +131,23 @@ $(foreach dep,$(CUR_DEPS), \
 			$(eval \
 				CURNAME=$(call get_val_in_file,$(dir)/config/build_cfg.mk,NAME)\
 				$(if $(call eq,$(CURNAME),$(dep)), \
-					$(if $(shell make -q -C $(CURNAME) RUNDIR=$(RUNDIR) &> /dev/null || echo "not_updated"),\
-						$(shell make -C $(CURNAME) RUNDIR=$(RUNDIR)))\
+					$(if $(shell make -q -C $(dir) RUNDIR=$(RUNDIR) &> /dev/null || echo "not_updat_ed"),\
+						$(shell make -C $(dir) RUNDIR=$(RUNDIR)))\
 					$(eval $(dep)_FOUND=true) \
 					$(eval PKG_DIR=$(dir)) \
 					$(eval include $(dir)/config/link_cfg.mk)\
 					$(eval LFLAGS_ACC += $(LFLAGS))\
 					$(eval CFLAGS_ACC += $(CFLAGS))\
-					$(eval SFLAGS_ACC += $(SFLAGS_$(SYSTEM))))\
+					$(eval SFLAGS_ACC += $(SFLAGS_$(SYSTEM)))\
+					$(eval S_LFLAGS_ACC += $(LFLAGS_$(SYSTEM)))\
+					$(eval S_CFLAGS_ACC += $(CFLAGS_$(SYSTEM)))\
 					$(eval include $(dir)/config/build_cfg.mk)\
 					$(eval DEP_ACC += $(OUTPUT))\
-					$(eval $(call GEN_DEP_RULE,$(OUTPUT),$(dir)))\
+					$(eval $(call GEN_DEP_RULE,$(OUTPUT),$(dir))))\
 			)\
 		)\
-		$(if $($(dep)_FOUND),,$(error Dependency $(dep) not found.))\
 	)\
+	$(if $($(dep)_FOUND),,$(error Dependency $(dep) not found.))\
 )
 
 SRCS := $(call src_from_modules, $(CUR_MODULES))
@@ -148,7 +170,7 @@ build/$1: build
 build/$1/%.o: $1/%.c
 	$$(call inc_n)
 	@printf "\e[32m[%*s/%s]\e[0m Compiling \e[34m%-31.31s\e[0m" $(call int_length,$(NSRCS)) $$(call get_n) $(NSRCS) $(notdir $$@)...
-	@$(CC) $$(CFLAGS_ACC) -c $$^ -o $$@ $$(SFLAGS_ACC)
+	@$(CC) $$(CFLAGS_ACC) $$(S_CFLAGS_ACC) -c $$^ -o $$@ $$(SFLAGS_ACC)
 	@printf "\e[32m[✓]\e[0m\n"
 endef
 
@@ -161,7 +183,7 @@ $(CUR_OUTPUT): $(BUILD_DEPS) $(DEP_ACC) $(addprefix build/,$(OBJS))
 	@printf "\e[31m------------------------------------------------------\e[0m\n"
 	@printf "\e[34mLinking %s..." $(CUR_OUTPUT)
 ifeq ($(CUR_TYPE),prog)
-	@$(CC) $(addprefix build/,$(OBJS)) -o $(CUR_OUTPUT) $(LFLAGS_ACC) $(SFLAGS_ACC)
+	@$(CC) $(addprefix build/,$(OBJS)) -o $(CUR_OUTPUT) $(LFLAGS_ACC) $(S_LFLAGS_ACC) $(SFLAGS_ACC)
 else
 	@ld -r $(addprefix build/,$(OBJS)) -o $(OUTPUT)
 endif
