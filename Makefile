@@ -1,5 +1,8 @@
+load config/ext_make.so(setup)
+
 SHELL = /bin/bash
 SYSTEM = $(shell uname)
+TERM_WIDTH := $(get-term-info WIDTH)
 
 ifeq ($(SYSTEM),Linux)
 ECHO_SUFFIX = -e
@@ -114,10 +117,7 @@ S_CFLAGS_ACC := $(CFLAGS_$(SYSTEM))
 
 S_FLAGS_ACC := $(SFLAGS_$(SYSTEM))
 
-all: print_head $(CUR_OUTPUT)
-
-print_head:
-	$(info $(call redout,$(call generate_header,[Building\ $(CUR_NAME)...])))
+all: $(CUR_OUTPUT) 
 
 define GEN_DEP_RULE
 $1:
@@ -132,7 +132,7 @@ $(foreach dep,$(CUR_DEPS), \
 				CURNAME=$(call get_val_in_file,$(dir)/config/build_cfg.mk,NAME)\
 				$(if $(call eq,$(CURNAME),$(dep)), \
 					$(if $(shell make -q -C $(dir) RUNDIR=$(RUNDIR) &> /dev/null || echo "not_updat_ed"),\
-						$(shell make -C $(dir) RUNDIR=$(RUNDIR)))\
+						$(shello make --no-print-directory -C $(dir) RUNDIR=$(RUNDIR)))\
 					$(eval $(dep)_FOUND=true) \
 					$(eval PKG_DIR=$(dir)) \
 					$(eval include $(dir)/config/link_cfg.mk)\
@@ -152,6 +152,7 @@ $(foreach dep,$(CUR_DEPS), \
 
 SRCS := $(call src_from_modules, $(CUR_MODULES))
 NSRCS := $(call nsrc_from_modules, $(CUR_MODULES))
+$(init-pb $(NSRCS),$(TERM_WIDTH))
 PNSRCS := 0
 OBJS := $(SRCS:.c=.o)
 BUILD_DEPS = build
@@ -168,10 +169,8 @@ build/$1: build
 	@mkdir -p build/$1
 
 build/$1/%.o: $1/%.c
-	$$(call inc_n)
-	@printf "\e[32m[%*s/%s]\e[0m Compiling \e[34m%-31.31s\e[0m" $(call int_length,$(NSRCS)) $$(call get_n) $(NSRCS) $(notdir $$@)...
+	$$(gen-pb $$^)
 	@$(CC) $$(CFLAGS_ACC) $$(S_CFLAGS_ACC) -c $$^ -o $$@ $$(SFLAGS_ACC)
-	@printf "\e[32m[✓]\e[0m\n"
 endef
 
 $(foreach mod,$(CUR_MODULES),\
@@ -179,8 +178,12 @@ $(foreach mod,$(CUR_MODULES),\
 	$(eval $(call BUILD_DIR_RULE,$(mod)))\
 )
 
-$(CUR_OUTPUT): $(BUILD_DEPS) $(DEP_ACC) $(addprefix build/,$(OBJS))
-	@printf "\e[31m------------------------------------------------------\e[0m\n"
+$(print-head $(CUR_OUTPUT),$(TERM_WIDTH))
+
+tail:
+	$(print-tail $(TERM_WIDTH))
+
+$(CUR_OUTPUT): $(BUILD_DEPS) $(DEP_ACC) $(addprefix build/,$(OBJS)) | tail
 	@printf "\e[34mLinking %s..." $(CUR_OUTPUT)
 ifeq ($(CUR_TYPE),prog)
 	@$(CC) $(addprefix build/,$(OBJS)) -o $(CUR_OUTPUT) $(LFLAGS_ACC) $(S_LFLAGS_ACC) $(SFLAGS_ACC)
@@ -189,12 +192,12 @@ else
 endif
 	@printf "\e[32m✓\e[0m\n"
 
-.PHONY: clean fclean re all print_head
+.PHONY: clean fclean re all 
 
-clean:
+clean: | tail
 	@/bin/rm -rf $(addprefix build/,$(OBJS))
 
-fclean: clean
+fclean: clean | tail
 	@/bin/rm -rf $(CUR_OUTPUT) build
 
 re: fclean all
