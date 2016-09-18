@@ -1,0 +1,20 @@
+void	print_error(t_error *e, const char *i)
+{
+	t_fpos s;
+
+	s = (t_fpos){0, 0, 0};
+	s.line = 1;
+	while (s.line != e->loc.line)
+		if (*i++ == '\n')
+			++s.line;
+	while (*i && *i != '\n')
+	{
+		ft_putchar((*i == '\t' ? ' ' : *i));
+		++i;
+	}
+	ft_putchar('\n');
+	while (s.col++ != e->loc.col)
+		ft_putchar(' ');
+	ft_putchar('^');
+	ft_putchar('\n');
+}

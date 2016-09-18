@@ -1,0 +1,8 @@
+void	*gen_char_parser(void *i)
+{
+	char s;
+
+	s = *(char*)i;
+	free(i);
+	return (char_parser(s));
+}
