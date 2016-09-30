@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 11:20:53 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/03/27 03:06:03 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/09/30 08:49:30 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ t_list				*ft_lstmapup(t_list *l, t_genup f, void *up);
 void				ft_lstdel(t_list **alst, t_destructor del);
 void				ft_lstpush(t_list **lst, t_list *to_add);
 void				ft_lstsort(t_list **head, t_lstcmp cmp);
-void				ft_lstadd(t_list **alst, t_list *new);
+void				ft_lstadd(t_list **alst, t_list *newe);
 t_list				*ft_lstfilter(t_list *lst, t_keep f);
 void				ft_lstiter(t_list *lst, t_iter f);
 t_list				*ft_lstmap(t_list *lst, t_gen f);
@@ -111,8 +111,8 @@ t_dlist				*ftext_lstnewelemown(void *content, size_t size);
 void				ftext_lstdel(t_dlisthead **alst, t_destructor del);
 void				ftext_lstiter(t_dlisthead *lst, t_diter f);
 void				ftext_lstiterup(t_dlisthead *lst, t_diterup f, void *up);
-void				ftext_lstpush_back(t_dlisthead *lst, t_dlist *new);
-void				ftext_lstpush_front(t_dlisthead *alst, t_dlist *new);
+void				ftext_lstpush_back(t_dlisthead *lst, t_dlist *newe);
+void				ftext_lstpush_front(t_dlisthead *alst, t_dlist *newe);
 t_dlisthead			*ftext_lstmap(t_dlisthead *lst, t_dgen f);
 t_dlisthead			*ftext_lstmapup(t_dlisthead *lst, t_dgenup f, void *up);
 void				ftext_lstdelone(t_dlist *alst, t_destructor del);
@@ -128,7 +128,7 @@ void				ftext_lstsplit(t_dlisthead *head, t_dlisthead *a,
 								t_dlisthead *b);
 void				ftext_lstsort(t_dlisthead *head, t_dlstcmp cmp);
 void				ftext_lstsortup(t_dlisthead *h, t_dlstcmpup c, void *u);
-t_dlisthead			*ftext_lstinit(t_dlisthead *this);
+t_dlisthead			*ftext_lstinit(t_dlisthead *self);
 
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
