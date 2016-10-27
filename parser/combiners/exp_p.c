@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 23:37:48 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/09/18 03:31:40 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/10/28 00:02:28 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ t_error		*new_error(t_input *i, const char *e)
 	ret->loc = *pos;
 	free(pos);
 	ft_strcpy(ret->expected, str);
-	puts(str);
 	free(str);
 	return (ret);
 }

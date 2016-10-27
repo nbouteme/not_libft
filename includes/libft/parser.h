@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/18 00:44:42 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/09/18 03:48:26 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/10/28 00:01:05 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ typedef struct	s_ast
 
 typedef struct	s_input
 {
-	char *buffer;
-	char *cursor;
-	char *saved;
-	int suppress;
+	char	*buffer;
+	char	*cursor;
+	char	*saved;
+	int		suppress;
 }				t_input;
 
 typedef struct	s_parser
@@ -138,10 +138,10 @@ typedef struct	s_symtable
 	t_dlisthead	*syms;
 }				t_symtable;
 
-union u_result
+union			u_result
 {
-	void *result;
-	t_error *error;
+	void	*result;
+	t_error	*error;
 };
 
 void			do_nothing(t_parser *base);

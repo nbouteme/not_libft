@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 23:41:33 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/09/18 03:19:01 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/10/27 23:59:09 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			match_zom(t_parser *base, t_input *i, void **out)
 	}
 	free(tmp);
 	*out = 0;
-	if(m)
+	if (m)
 		*out = self->folder(m, buf);
 	free(buf);
 	return (1);
