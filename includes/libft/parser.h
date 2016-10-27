@@ -40,6 +40,7 @@ typedef struct	s_input
 	char *buffer;
 	char *cursor;
 	char *saved;
+	int suppress;
 }				t_input;
 
 typedef struct	s_parser
@@ -136,6 +137,12 @@ typedef struct	s_symtable
 {
 	t_dlisthead	*syms;
 }				t_symtable;
+
+union u_result
+{
+	void *result;
+	t_error *error;
+};
 
 void			do_nothing(t_parser *base);
 void			delete_parser(void *base);

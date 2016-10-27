@@ -14,9 +14,18 @@
 
 void	*gen_char_parser(void *i)
 {
-	char s;
+	char		*s;
+	t_parser	*ret;
 
-	s = *(char*)i;
+	s = i;
+	if (s[0] == '.')
+		ret = anychar_parser();
+	else if (s[0] == '^')
+		ret = bof_parser();
+	else if (s[0] == '$')
+		ret = eof_parser();
+	else
+		ret = char_parser(s[0]);
 	free(i);
-	return (char_parser(s));
+	return (ret);
 }

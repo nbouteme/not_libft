@@ -18,8 +18,7 @@ typedef struct s_input		t_input;
 typedef struct s_symtable	t_symtable;
 typedef t_symtable			t_langparser;
 
-typedef void *t_err;
-typedef int(*t_match_f)(t_parser *, t_input *, void**);
+typedef int		(*t_match_f)(t_parser *, t_input *, void**);
 typedef void	(*t_pdtor)(t_parser *);
 typedef void	*(*t_folder)(int, void **);
 typedef void	(*t_dtor)(void *);

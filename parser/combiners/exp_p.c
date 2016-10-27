@@ -41,12 +41,15 @@ t_error		*new_error(t_input *i, const char *e)
 	t_fpos	*pos;
 	t_error	*ret;
 
+	if (i->suppress)
+		return (0);
 	pos = get_istate(i);
 	str = build_error(e, pos);
 	ret = ft_memalloc(sizeof(*ret) + ft_strlen(str) + 1);
 	ret->loc = *pos;
 	free(pos);
 	ft_strcpy(ret->expected, str);
+	puts(str);
 	free(str);
 	return (ret);
 }
@@ -59,9 +62,14 @@ int			exp_match(t_parser *base, t_input *i, void **out)
 	self = (void*)base;
 	tmp = i->cursor;
 	*out = 0;
+	i->suppress++;
 	if (self->p->match_fun(self->p, i, out))
+	{
+		i->suppress--;
 		return (1);
+	}
 	free(*out);
+	i->suppress--;
 	*out = new_error(i, self->e);
 	i->cursor = tmp;
 	return (0);

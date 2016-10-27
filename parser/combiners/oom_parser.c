@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <libft/parser.h>
+#include <stdio.h>
 
 void		delete_oom(t_parser *base)
 {

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <libft/parser.h>
+#include <stdio.h>
 
 int			match_zom(t_parser *base, t_input *i, void **out)
 {
@@ -31,7 +32,8 @@ int			match_zom(t_parser *base, t_input *i, void **out)
 	}
 	free(tmp);
 	*out = 0;
-	*out = self->folder(m, buf);
+	if(m)
+		*out = self->folder(m, buf);
 	free(buf);
 	return (1);
 }

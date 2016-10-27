@@ -1,7 +1,7 @@
 NAME = libft
 TYPE = lib
 
-CFLAGS = -Wall -Wextra -Werror -O3
+CFLAGS = -Wall -Wextra -Werror -g
 MODULES = std parser
 
 INCLUDE_DIRS = $(PKG_DIR)/includes

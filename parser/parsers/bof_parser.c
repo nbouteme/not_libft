@@ -23,9 +23,7 @@ t_parser	*bof_parser(void)
 {
 	t_parser *ret;
 
-	ret = malloc(sizeof(*ret));
-	ret->match_fun = match_bof;
-	ret->dtor = do_nothing;
+	ret = init_parser(malloc(sizeof(*ret)), match_bof, do_nothing);
 	ret->size = sizeof(*ret);
 	return (exp_p(ret, "<BOF>"));
 }

@@ -20,6 +20,7 @@ int		run_parser(t_parser *p, char *s, void **res)
 	*res = 0;
 	i.buffer = s;
 	i.cursor = s;
+	i.suppress = 0;
 	ret = p->match_fun(p, &i, res);
 	return (ret);
 }
