@@ -104,6 +104,7 @@ build:
 define BUILD_DIR_RULE
 $$(eval $1_CC ?= $(CC))
 $$(eval $1_EXT ?= .c)
+$$(eval $1_INPUTPREFIX ?= -c)
 
 $$(eval TMP = $$(call src_from_modules,$1))
 $$(eval SRCS += $$(TMP))
@@ -118,7 +119,7 @@ build/$1: build
 
 build/$1/%.o: $1/%$$($1_EXT) build
 	$$(gen-pb $$<)
-	$$($1_CC) $$($1_CFLAGS) $(ACFLAGS_ACC) $$(S_CFLAGS_ACC) -c $$< -o $$@ $$(SFLAGS_ACC)
+	$$($1_CC) $$($1_CFLAGS) $(ACFLAGS_ACC) $$(S_CFLAGS_ACC) $$($1_INPUTPREFIX) $$< -o $$@ $$(SFLAGS_ACC)
 endef
 
 to_def = $(shell echo $1 | tr [:lower:]/ [:upper:]_)
