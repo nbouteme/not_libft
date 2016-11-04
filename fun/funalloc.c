@@ -6,7 +6,7 @@
 /*   By: nbouteme <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 04:44:03 by nbouteme          #+#    #+#             */
-/*   Updated: 2016/10/30 05:19:42 by nbouteme         ###   ########.fr       */
+/*   Updated: 2016/11/04 11:54:05 by nbouteme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	init_master_block(void)
 	int		i;
 	char	*mb;
 
-	mb = (void*)ft_syscall(SYS_mmap, 0, MSTB_SIZE + FUNB_SIZE,
+	mb = (void*)ft_syscall(SYS_mmap, 0l, MSTB_SIZE + FUNB_SIZE,
 						PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS,
-						-1, 0);
+						-1l, 0l);
 	i = 0;
 	while (i < (FUN_NBR / 8))
 		mb[i++] = 0;
@@ -60,7 +60,7 @@ void	*funalloc(void)
 		if (mb[i] != 0xff)
 		{
 			j = mb[i];
-			while ((j >>= n) & 1)
+			while ((j >> n) & 1)
 				n++;
 			mb[i] |= 1 << n;
 			mb += MSTB_SIZE;
