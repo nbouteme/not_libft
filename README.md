@@ -4,6 +4,17 @@ LibFT
 Réimplémentation d'un sous-ensemble de la libc, avec 
 quelques structures de données en plus.
 
+Sommaire
+---------
+- [std](#documentation)
+ - [algorithm](#algorithm)
+ - [io](#io)
+ - [list](#list)
+ - [memory](#memory)
+ - [string](#string)
+- [parser](#parser)
+ - [Fonctionnement](#fonctionnement)
+
 ##Notes
 
 ### Build System
@@ -15,75 +26,26 @@ projets entre eux.
 Les projets doivent disposer à leur racine un dossier `config`, avec un fichier
 `build_cfg.mk` qui doit contenir au moins les clés suivantes:
 
-<table>
-<tr>
-<td>Nom</td>
-<td>Description</td>
-</tr>
-<tr>
-<td>NAME</td>
-<td>Le nom du projet. Utilisé par le build system pour repérer les dépendances.</td>
-</tr>
-<tr>
-<td>TYPE</td>
-<td>Le type du projet. Peut prendre pour valeur "prog" ou "lib", utilisé par
-	le build system pour savoir comment linker le projet.
-</td>
-</tr>
-<tr>
-<td>MODULE</td>
-<td>Liste des modules du projet. Par défaut, tout les fichiers .c présents sous
-les répertoires du même nom à la racine seront compilé pour le projet.
-</td>
-</tr>
-<tr>
-<td>OUTPUT</td>
-<td>Nom du fichier de sortie
-</td>
-</tr>
-</table>
+| Nom   | Description                                                                 |
+| ----- | --------------------------------------------------------------------------- |
+|NAME|Le nom du projet. Utilisé par le build system pour repérer les dépendances |
+|TYPE|Le type du projet. Peut prendre pour valeur "prog" ou "lib", utilisé par le build system pour savoir comment linker le projet. |
+|MODULE|Liste des modules du projet. Par défaut, tout les fichiers .c présents sousles répertoires du même nom à la racine seront compilé pour le projet.|
+|OUTPUT|Nom du fichier de sortie|
 
 En plus de ces variables **obligatoires**, les variables suivantes facultatives
 sont supportées:
 
-<table>
-<tr>
-<td>Nom</td>
-<td>Description</td>
-</tr>
-<tr>
-<td>INCLUDE_DIRS</td>
-<td>Liste des répertoires à ajouter au chemin de recherche de fichiers</td>
-</tr>
-<tr>
-<td>CFLAGS</td>
-<td>Liste des flags à utiliser lors de la compilation</td>
-</tr>
-<tr>
-<td>LFLAGS</td>
-<td>Liste des flags à utiliser lors du link</td>
-</tr>
-<tr>
-<td>SFLAGS</td>
-<td>Liste des flags à utiliser commun aux deux étapes de compilation.</td>
-</tr>
-<tr>
-<td>(C|L|S)FLAGS_{SYSTEM}</td>
-<td>Liste des flags à utiliser en fonction du systeme hôte. Par exemple, CFLAGS_Darwin permet de spécifier des flags de compilation propre à une compilation sous OSX</td>
-</tr>
-<tr>
-<td>{MODULE}_CC</td>
-<td>Commande de compilation pour le module MODULE. Doit obligatoirement générer un fichier objet pour linker.</td>
-</tr>
-<tr>
-<td>{MODULE}_EXT</td>
-<td>Extension des fichiers à traiter pour le module MODULE</td>
-</tr>
-<tr>
-<td>{MODULE}_INPUTPREFIX</td>
-<td>Valeur du flag indiquant le traitement à effectuer pour le fichier d'entrée</td>
-</tr>
-</table>
+| Nom   | Description                                                                 |
+| ----- | --------------------------------------------------------------------------- |
+|INCLUDE_DIRS|Liste des répertoires à ajouter au chemin de recherche de fichiers|
+|CFLAGS|Liste des flags à utiliser lors de la compilation|
+|LFLAGS|Liste des flags à utiliser lors du link|
+|SFLAGS|Liste des flags à utiliser commun aux deux étapes de compilation.|
+|(C/L/S)FLAGS_{SYSTEM}|Liste des flags à utiliser en fonction du systeme hôte. Par exemple, CFLAGS_Darwin permet de spécifier des flags de compilation propre à une compilation sous OSX|
+|{MODULE}_CC|Commande de compilation pour le module MODULE. Doit obligatoirement générer un fichier objet pour linker.|
+|{MODULE}_EXT|Extension des fichiers à traiter pour le module MODULE|
+|{MODULE}_INPUTPREFIX|Valeur du flag indiquant le traitement à effectuer pour le fichier d'entrée|
 
 # Documentation
 
