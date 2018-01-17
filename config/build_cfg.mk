@@ -10,12 +10,13 @@ OUTPUT = $(PKG_DIR)/libft.a
 
 bits_EXT = .s
 bits_CC = nasm
-bits_CFLAGS = -f macho64
 
 uname = $(shell uname)
 
 ifeq ($(uname),Darwin)
-bits_CFLAGS += -D__APPLE__
+bits_CFLAGS += -f macho64 -D__APPLE__
+else
+bits_CFLAGS += -f elf64
 endif
 
 bits_INPUTPREFIX =
